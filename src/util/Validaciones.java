@@ -20,5 +20,6 @@ public class Validaciones {
 	public static final String TEXTO_NUMERO = "[0-9a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,40}";
 	public static final String NUMERO = "[0-9]{1,1000}";
 	public static final String SERIECRUDLIBRO= "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,100}";
+	public static final String TELEFONO="[0-9]{9}";
 	
 }
