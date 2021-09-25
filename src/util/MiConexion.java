@@ -39,7 +39,10 @@ public class MiConexion {
 		Connection conn = null;
 		
 		try {
+
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_biblioteca_simple_2021_02?serverTimezone=America/Lima","root","MySQL");           
+			           
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

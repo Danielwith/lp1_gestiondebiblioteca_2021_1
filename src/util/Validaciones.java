@@ -21,4 +21,9 @@ public class Validaciones {
 	public static final String NUMERO = "[0-9]{1,1000}";
 	public static final String SERIECRUDLIBRO= "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,100}";
 
+	
+	//Validaciones para Registro Alumno//
+	public static final String TEXTOALUMNO = "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,30}";
+	
+
 }
