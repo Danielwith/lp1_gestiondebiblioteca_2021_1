@@ -22,4 +22,7 @@ public class Validaciones {
 	public static final String SERIECRUDLIBRO= "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,100}";
 	public static final String TELEFONO="[0-9]{9}";
 	
+	//Validaciones para Registro Alumno//
+	public static final String TEXTOALUMNO = "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,30}";
+	
 }

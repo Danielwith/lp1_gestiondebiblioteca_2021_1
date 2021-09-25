@@ -48,4 +48,8 @@ public class MiConexion {
 	}
 	
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/jorgejacinto9701/lp1_2021_2_sabado_02_grupo_01.git
