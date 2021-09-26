@@ -2,7 +2,7 @@ package entidad;
 
 import java.sql.Date;
 
-public class proveedor {
+public class Proveedor {
 
 	private int idproveedor;
 	private String nombres;

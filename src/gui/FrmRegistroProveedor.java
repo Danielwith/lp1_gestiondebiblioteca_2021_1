@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import entidad.proveedor;
+import entidad.Proveedor;
 import model.ProveedorModel;
 import util.Validaciones;
 
@@ -213,7 +213,7 @@ public class FrmRegistroProveedor extends JInternalFrame implements ActionListen
 	
 	/**/
 	
-	proveedor obj = new proveedor();
+	Proveedor obj = new Proveedor();
 	obj.setNombres(nombres);
 	obj.setApellidos(apellidos);
 	obj.setDni(Integer.parseInt(dni));

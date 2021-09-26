@@ -3,12 +3,12 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import entidad.proveedor;
+import entidad.Proveedor;
 import util.MiConexion;
 
 public class ProveedorModel {
 
-	public int insertarProveedor(proveedor obj) {
+	public int insertarProveedor(Proveedor obj) {
 		int salida= -1;
 		
 		Connection conn=null;
