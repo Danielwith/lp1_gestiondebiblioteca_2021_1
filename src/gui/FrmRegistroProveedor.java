@@ -198,9 +198,9 @@ public class FrmRegistroProveedor extends JInternalFrame implements ActionListen
 		mensaje("DNI de 8 digitos");
 	}
 	
-	if(!telefono.matches(Validaciones.TELEFONO)) {
+	/*if(!telefono.matches(Validaciones.TELEFONO)) {
 		mensaje("Ingresa numero de 9 digitos");
-	}
+	}*/
 	
 	if(!correo.matches(Validaciones.CORREO)) {
 		mensaje("Ingrese un formato corecto");

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /*
  * Permite crer una conexion a la BD
  * Se debe tener:
@@ -18,38 +17,31 @@ import java.sql.SQLException;
  */
 public class MiConexion {
 
-	static{
+	static {
 		try {
-			//permite crear objetos (Hace new)
+			// permite crear objetos (Hace new)
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	/*  
-	 * 	IP :localhost
-	 *  PUERTO: 3306
-	 *  BD: mydb
-	 *  USUARIO: root
-	 *  PASSWORD: mysql
+
+	/*
+	 * IP :localhost PUERTO: 3306 BD: mydb USUARIO: root PASSWORD: mysql
 	 * 
 	 */
 	public Connection getConexion(){
 		Connection conn = null;
 		
 		try {
+
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_biblioteca_simple_2021_02?serverTimezone=America/Lima","root","mysql");           
+			           
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return conn;
 	}
-	
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/jorgejacinto9701/lp1_2021_2_sabado_02_grupo_01.git
