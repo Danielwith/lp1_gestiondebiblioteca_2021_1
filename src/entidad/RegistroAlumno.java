@@ -10,7 +10,7 @@ public class RegistroAlumno {
 	private int dni;
 	private String correo;
 	private Date fechanacimiento;
-	private Date fecharegistro;
+
 	
 	
 	public int getIdAlumno() {
@@ -49,12 +49,5 @@ public class RegistroAlumno {
 	public void setFechanacimiento(Date fechanacimiento) {
 		this.fechanacimiento = fechanacimiento;
 	}
-	public Date getFecharegistro() {
-		return fecharegistro;
-	}
-	public void setFecharegistro(Date fecharegistro) {
-		this.fecharegistro = fecharegistro;
-	}
-	
 	
 }

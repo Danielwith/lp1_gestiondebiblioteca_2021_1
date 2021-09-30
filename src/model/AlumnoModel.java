@@ -19,14 +19,14 @@ public class AlumnoModel {
 			conn = new MiConexion().getConexion();
 			
 			
-			String sql = "Insert into alumno values(null,?,?,?,?,?,?)";
+			String sql = "Insert into alumno values(null,?,?,?,?,?,curtime())";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, obj.getNombres());
 			psmt.setString(2, obj.getApellido());
 			psmt.setInt(3, obj.getDni());
 			psmt.setString(4, obj.getCorreo());
 			psmt.setDate(5, obj.getFechanacimiento());
-			psmt.setDate(6, obj.getFecharegistro()); 
+		
 			
 			
 			salida = psmt.executeUpdate();

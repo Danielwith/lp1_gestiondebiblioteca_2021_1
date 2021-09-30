@@ -28,7 +28,6 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 	private JTextField txtapellidos;
 	private JTextField txtcorreo;
 	private JTextField txtfechanacimiento;
-	private JTextField txtfecharegistro;
 	private JButton btnRegistrar;
 	private JLabel lblNewLabel_2;
 	private JTextField txtdni;
@@ -91,11 +90,6 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		lblNewLabel_1_3.setBounds(32, 327, 249, 24);
 		getContentPane().add(lblNewLabel_1_3);
 		
-		JLabel lblNewLabel_1_3_1 = new JLabel("Fecha de Registro");
-		lblNewLabel_1_3_1.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblNewLabel_1_3_1.setBounds(32, 377, 249, 35);
-		getContentPane().add(lblNewLabel_1_3_1);
-		
 		txtnombres = new JTextField();
 		txtnombres.setBackground(SystemColor.text);
 		txtnombres.setBounds(287, 124, 278, 20);
@@ -116,11 +110,6 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		txtfechanacimiento.setColumns(10);
 		txtfechanacimiento.setBounds(287, 334, 278, 20);
 		getContentPane().add(txtfechanacimiento);
-		
-		txtfecharegistro = new JTextField();
-		txtfecharegistro.setColumns(10);
-		txtfecharegistro.setBounds(287, 388, 278, 22);
-		getContentPane().add(txtfecharegistro);
 		
 		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\carlos\\Desktop\\CIBERTEC\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Proyecto\\Iconos 2\\Download.gif"));
@@ -161,30 +150,31 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		String dni = txtdni.getText();
 		String correo = txtcorreo.getText();
 		String fnac = txtfechanacimiento.getText();
-		String fregis = txtfecharegistro.getText();
+		
 		
 		//VALIDACIONESS/////
 		
 		if(!nombres.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El nombre es de 3 a 30 caracteres");
+			
 		}
 		if(!apellidos.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El apellido es de 3 a 30 caracteres");
+			return;
 		}
 		if(!dni.matches(Validaciones.DNI)) {
 			mensaje("El dni solo son 8 digitos");
+			return;
 		}
 		if(!correo.matches(Validaciones.CORREO)) {
 			mensaje("Ingresar el formato correcto");
+			return;
 		}
 		if(!fnac.matches(Validaciones.FECHA)) {
-			mensaje("Formato incorrecto de fecha");
+			mensaje("La fecha es de formato yyyy-MM-dd");
+			return;
 		}
-		if(!fregis.matches(Validaciones.FECHA))
-		{
-			mensaje("Formato incorrecto de Fecha de Registro");
-		}
-		
+
 		
 		
 		RegistroAlumno obj = new RegistroAlumno();
@@ -193,7 +183,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		obj.setDni(Integer.parseInt(dni));
 		obj.setCorreo(correo);
 		obj.setFechanacimiento(Date.valueOf(fnac));
-		obj.setFecharegistro(Date.valueOf(fregis));
+		
 		
 		AlumnoModel model = new AlumnoModel();
 		int salida = model.insertarAlumno(obj);
