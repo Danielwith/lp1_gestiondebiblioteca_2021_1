@@ -19,13 +19,14 @@ public class AutorModel {
 			conn = new MiConexion().getConexion();
 			
 			
-			String sql = "Insert into autor values(null,?,?,?,?,?,curtime())";
+			String sql = "Insert into autor values(null,?,?,?,curtime(),?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, obj.getNombres() );
 			psmt.setString(2, obj.getApellidos());
 			psmt.setDate(3, obj.getFechaNacimiento());
-			psmt.setDate(4, obj.getFechaRegistro());
 			psmt.setString(5, obj.getNacionalidad());
+			psmt.setInt(4, obj.getGrado());
+
 		
 			
 			salida = psmt.executeUpdate();
