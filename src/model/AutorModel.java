@@ -3,12 +3,12 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import entidad.RegistroAlumno;
+import entidad.Autor;
 import util.MiConexion;
 
-public class AlumnoModel {
+public class AutorModel {
 	
-	public int insertarAlumno(RegistroAlumno obj) {
+	public int insertarAutor(Autor obj) {
 		int salida= -1;
 		
 		Connection conn = null;
@@ -19,15 +19,14 @@ public class AlumnoModel {
 			conn = new MiConexion().getConexion();
 			
 			
-			String sql = "Insert into alumno values(null,?,?,?,?,?,?,?,?)";
+			String sql = "Insert into autor values(null,?,?,?,?,?,curtime())";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, obj.getNombres());
-			psmt.setString(2, obj.getApellido());
-			psmt.setInt(3, obj.getDni());
-			psmt.setString(4, obj.getCorreo());
-			psmt.setDate(5, obj.getFechanacimiento());
+			psmt.setString(1, obj.getNombres() );
+			psmt.setString(2, obj.getApellidos());
+			psmt.setDate(3, obj.getFechaNacimiento());
+			psmt.setDate(4, obj.getFechaRegistro());
+			psmt.setString(5, obj.getNacionalidad());
 		
-			
 			
 			salida = psmt.executeUpdate();
 		
@@ -35,6 +34,7 @@ public class AlumnoModel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		finally {
 			
 			try {
@@ -45,15 +45,9 @@ public class AlumnoModel {
 			} catch (Exception e2) {
 				
 			}
-		}
-		
-		
-		
+		} 
 		
 		return salida;
 		
-		
-		
 	}
-
 }
