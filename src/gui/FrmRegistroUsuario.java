@@ -1,22 +1,22 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+
 import entidad.RegistrarUsuario;
 import model.RegistroUsuarioModel;
 import util.Validaciones;
-
-import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
 
 public class FrmRegistroUsuario extends JInternalFrame implements ActionListener {
 
@@ -158,7 +158,7 @@ public class FrmRegistroUsuario extends JInternalFrame implements ActionListener
 		String apUsu = txtApeUsu.getText();
 		String fecusu = txtFecNaciUsu.getText();
 		String login = txtLogin.getText();
-		String con = txtContra.getText();
+		String con = String.valueOf(txtContra.getPassword());
 		String corre = txtCorreo.getText();
 		String direc = txtDirec.getText();
 		String DNI = txtDNI.getText();

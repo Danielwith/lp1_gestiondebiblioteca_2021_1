@@ -17,7 +17,7 @@ public class LibroModel {
 		Connection conn = null;
 		PreparedStatement pstm=null;
 		try {
-			conn=new MySqlDBConexion().getConexion();
+			conn=MySqlDBConexion.getConexion();
 			
 			String sql="INSERT INTO libro VALUES(null,?,?,?,?,?,?)";
 			pstm=conn.prepareStatement(sql);
