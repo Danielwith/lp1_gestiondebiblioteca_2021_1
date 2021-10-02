@@ -22,9 +22,9 @@ public class ProveedorModel {
 			psnt = conn.prepareStatement(sql);
 			psnt.setString(1, obj.getNombres());
 			psnt.setString(2, obj.getApellidos());
-			psnt.setInt(3, obj.getDni());
+			psnt.setString(3, obj.getDni());
 			psnt.setString(4, obj.getDireccion());
-			psnt.setInt(5, obj.getTelefono());
+			psnt.setString(5, obj.getTelefono());
 			psnt.setString(6, obj.getCorreo());
 			psnt.setString(7,obj.getPais());
 			psnt.setDate(8, obj.getFechaRegistro());

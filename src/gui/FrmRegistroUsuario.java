@@ -18,7 +18,7 @@ import java.sql.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
-public class FrmRegistroUsuario extends JInternalFrame {
+public class FrmRegistroUsuario extends JInternalFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNoUsu;
@@ -29,6 +29,7 @@ public class FrmRegistroUsuario extends JInternalFrame {
 	private JTextField txtDirec;
 	private JTextField txtDNI;
 	private JPasswordField txtContra;
+	private JButton btnRegistrar;
 
 	/**
 	 * Launch the application.
@@ -141,8 +142,9 @@ public class FrmRegistroUsuario extends JInternalFrame {
 		txtContra.setBounds(246, 295, 306, 27);
 		getContentPane().add(txtContra);
 
-		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setBounds(672, 429, 122, 40);
+		btnRegistrar.addActionListener(this);
 		getContentPane().add(btnRegistrar);
 
 	}

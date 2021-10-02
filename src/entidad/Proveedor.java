@@ -7,9 +7,9 @@ public class Proveedor {
 	private int idproveedor;
 	private String nombres;
 	private String apellidos;
-	private int dni;
+	private String dni;
 	private String direccion;
-	private int telefono;
+	private String telefono;
 	private String correo;
 	private String pais;
 	private Date fechaRegistro;
@@ -31,10 +31,10 @@ public class Proveedor {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getDireccion() {
@@ -43,10 +43,10 @@ public class Proveedor {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getCorreo() {
