@@ -182,7 +182,9 @@ public class FrmRegistroLibro extends JInternalFrame  {
 			txtanio.setText("");
 			txtCategoria.setText("");
 			txtSerie.setText("");
+			
 			txtPais.setText("");
+			
 		}
 		else {
 			mensaje("Ocurrio un error al realizar el registro");
