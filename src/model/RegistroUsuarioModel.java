@@ -2,7 +2,11 @@ package model;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import entidad.RegistrarUsuario;
@@ -46,4 +50,168 @@ public class RegistroUsuarioModel {
 		}
 		return salida;
 	}
-}
+	
+	public int eliminarUsuario(int idUsuario) {
+
+		int salida = -1;
+
+		Connection conn = null;
+
+		PreparedStatement pstm = null;
+
+		try {
+
+			//1 Se crea la conexión
+
+			conn = new MiConexion().getConexion();
+
+
+
+			//2 Se prepara el SQL
+
+			String sql = "delete from usuario where idUsuario = ?";
+
+			pstm = conn.prepareStatement(sql);
+
+			pstm.setInt(1, idUsuario);
+
+			System.out.println("SQL -> " + pstm);
+
+			
+
+			//3 Se envía el SQL a la base de datos
+
+			salida = pstm.executeUpdate();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (pstm != null) pstm.close();
+
+				if (conn != null) conn.close();
+
+			} catch (Exception e2) {}
+
+		}
+
+		return salida;
+
+	}
+	public int actualizaUsuario(RegistrarUsuario obj) {
+
+		int salida = -1;
+
+		Connection conn = null;
+
+		PreparedStatement pstm = null;
+
+		try {
+
+			//1 Se crea la conexión
+
+			conn = new MiConexion().getConexion();
+			//2 Se prepara el SQL
+
+			String sql = "update usuario set nombre=?,apellido=?,dni=?,login=?,password=?,correo=?,fechaNacimiento=?,direccion=? where idUsuario=?";
+
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, obj.getNombreUsuario());
+			pstm.setString(2, obj.getApellidoUsuario());
+			pstm.setInt(3, obj.getDNI());
+			pstm.setString(4, obj.getLogin());
+			pstm.setString(5, obj.getPassword());
+			pstm.setString(6, obj.getCorreo());
+			pstm.setDate(7, obj.getFechaNacimientoUsuario());
+			pstm.setString(8, obj.getDirección());
+			pstm.setInt(9,obj.getIdUsuario());
+			
+			System.out.println("SQL -> " + pstm);
+			//2Se envía el SQL a la base de datos
+
+			salida = pstm.executeUpdate();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (pstm != null) pstm.close();
+
+				if (conn != null) conn.close();
+
+			} catch (Exception e2) {}
+
+		}
+
+		return salida;
+	}
+	public List<RegistrarUsuario> listaUsuario(){
+		
+		ArrayList<RegistrarUsuario> salida = new ArrayList<RegistrarUsuario>();
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		try {
+
+			//1 Se crea la conexión
+
+			conn = new MiConexion() .getConexion();
+
+
+
+			//2 Se prepara el SQL
+
+			String sql = "select * from usuario";
+
+			pstm = conn.prepareStatement(sql);
+
+
+			System.out.println("SQL -> " + pstm);
+			
+			rs = pstm.executeQuery();
+			RegistrarUsuario obj = null;
+			while(rs.next()) {
+				obj= new RegistrarUsuario();
+				obj.setIdUsuario(rs.getInt(1));
+				obj.setNombreUsuario(rs.getString(2));
+				obj.setApellidoUsuario(rs.getString(3));
+				obj.setDNI(rs.getInt(4));
+				obj.setLogin(rs.getString(5));
+				obj.setPassword(rs.getString(6));
+				obj.setCorreo(rs.getString(7));
+				obj.setFechaNacimientoUsuario(rs.getDate(8));
+				obj.setDirección(rs.getString(9));
+				salida.add(obj);
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (pstm != null) pstm.close();
+
+				if (conn != null) conn.close();
+
+			} catch (Exception e2) {}
+
+		}
+
+		return salida;
+
+	}
+	
+		
+	}
+
