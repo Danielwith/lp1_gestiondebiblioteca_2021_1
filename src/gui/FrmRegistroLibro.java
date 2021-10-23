@@ -50,7 +50,7 @@ public class FrmRegistroLibro extends JInternalFrame  {
 		setMaximizable(true);
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("Ingreso de Autor");
+		setTitle("Ingreso de Libro");
 		setBounds(100, 100, 900, 550);
 		getContentPane().setLayout(null);
 		
@@ -182,9 +182,7 @@ public class FrmRegistroLibro extends JInternalFrame  {
 			txtanio.setText("");
 			txtCategoria.setText("");
 			txtSerie.setText("");
-			
-			txtPais.setText("");
-			
+			txtPais.setText("");	
 		}
 		else {
 			mensaje("Ocurrio un error al realizar el registro");
