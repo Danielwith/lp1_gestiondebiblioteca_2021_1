@@ -21,6 +21,12 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import entidad.Opcion;
+import gui.FrmCrudAlumno;
+import gui.FrmCrudAutor;
+import gui.FrmCrudLibro;
+import gui.FrmCrudProveedor;
+import gui.FrmCrudSala;
+import gui.FrmCrudUsuario;
 import gui.FrmRegistroAlumno;
 import gui.FrmRegistroAutor;
 import gui.FrmRegistroLibro;
@@ -79,6 +85,14 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	public FrmRegistroUsuario frmRegistroUsuario = new FrmRegistroUsuario();
 	public FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor();
 
+
+	public FrmCrudAlumno frmCrudAlumno = new FrmCrudAlumno();
+	public FrmCrudAutor frmCrudAutor = new FrmCrudAutor();
+	public FrmCrudLibro frmCrudLibro = new FrmCrudLibro();
+	public FrmCrudSala frmCrudSala = new FrmCrudSala();
+	public FrmCrudUsuario frmCrudUsuario = new FrmCrudUsuario();
+	public FrmCrudProveedor frmCrudProveedor = new FrmCrudProveedor();
+	
 	// Formularios
 
 	public FrmPrincipal(String cad, int x, int y) {
@@ -286,6 +300,12 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmRegistroUsuario);
 		desktop.add(frmRegistroProveedor);
 
+		desktop.add(frmCrudAlumno);
+		desktop.add(frmCrudAutor);
+		desktop.add(frmCrudLibro);
+		desktop.add(frmCrudSala);
+		desktop.add(frmCrudUsuario);
+		desktop.add(frmCrudProveedor);
 	}
 
 	public static void main(String[] args) {
@@ -357,25 +377,31 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 			frmRegistroProveedor.setVisible(true);
 		}
 
-		// PC02 Crud
-		if (arg0.getSource() == mntCrudAlumno) {
-
-		}
-		if (arg0.getSource() == mntCrudAutor) {
-
-		}
-		if (arg0.getSource() == mntCrudLibro) {
-
-		}
-		if (arg0.getSource() == mntCrudSala) {
-
-		}
-		if (arg0.getSource() == mntCrudUsuario) {
-
-		}
-		if (arg0.getSource() == mntCrudProveedor) {
-
-		}
+		//PC02 Crud
+				if (arg0.getSource() == mntCrudAlumno) {
+					centrar(frmCrudAlumno);
+					frmCrudAlumno.setVisible(true);
+				}
+				if (arg0.getSource() == mntCrudAutor) {
+					centrar(frmCrudAutor);
+					frmCrudAutor.setVisible(true);
+				}
+				if (arg0.getSource() == mntCrudLibro) {
+					centrar(frmCrudLibro);
+					frmCrudLibro.setVisible(true);
+				}
+				if (arg0.getSource() == mntCrudSala) {
+					centrar(frmCrudSala);
+					frmCrudSala.setVisible(true);
+				}
+				if (arg0.getSource() == mntCrudUsuario) {
+					centrar(frmCrudUsuario);
+					frmCrudUsuario.setVisible(true);
+				}
+				if (arg0.getSource() == mntCrudProveedor) {
+					centrar(frmCrudProveedor);
+					frmCrudProveedor.setVisible(true);
+				}
 
 		// PC03 Consultas
 		if (arg0.getSource() == mntConsultaAlumno) {
