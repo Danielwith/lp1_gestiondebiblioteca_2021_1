@@ -181,7 +181,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		obj.setFechaNacimiento(Date.valueOf(fechaNacimiento));
 		obj.setFechaRegistro(Date.valueOf(fechaRegistro));
 		obj.setNacionalidad(nacionalidad);
-		obj.setGrado(Integer.parseInt(grado));
+		obj.setGrado(grado);
 		
 
 		AutorModel model=new AutorModel();

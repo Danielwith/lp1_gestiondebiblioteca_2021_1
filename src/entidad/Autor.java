@@ -10,7 +10,7 @@ public class Autor {
 	private String nacionalidad;
 	private Date fechaNacimiento;	
 	private Date fechaRegistro;
-	private int grado;
+	private String grado;
 	
 
 	public int getIdCodigo() {
@@ -49,10 +49,10 @@ public class Autor {
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
-	public int getGrado() {
+	public String getGrado() {
 		return grado;
 	}
-	public void setGrado(int grado) {
+	public void setGrado(String grado) {
 		this.grado = grado;
 	}
 	

@@ -2,11 +2,12 @@
 <section name="Workbench">
 	<section name="ExternalProjectImportWizard">
 		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\LP1-Proyecto\lp1_2021_2_sabado_02_grupo_01"/>
 			<item value="C:\Users\Carlo\OneDrive\Escritorio\Ciclo 3 - 2021-ll\Lenguaje de Programacion l\Proyecto\WorkSpaceProyecto\lp1_2021_2_sabado_02_grupo_01"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
