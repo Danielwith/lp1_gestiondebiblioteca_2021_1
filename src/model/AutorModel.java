@@ -163,6 +163,7 @@ public class AutorModel {
 			psmt.setString(5, obj.getNacionalidad());
 			psmt.setString(6, obj.getGrado());
 			psmt.setInt(7, obj.getIdCodigo());
+			
 			System.out.println("SQL -> " + psmt);
 			
 			salida = psmt.executeUpdate();

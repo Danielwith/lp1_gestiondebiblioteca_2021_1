@@ -26,6 +26,7 @@ import java.awt.event.MouseListener;
 import java.sql.Date;
 import java.util.List;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class FrmCrudAutor  extends JInternalFrame implements ActionListener, MouseListener  {
 
@@ -34,7 +35,6 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 	private JTextField txtApellido;
 	private JTextField txtNacionalidad;
 	private JTextField txtFechaNa;
-	private JTextField txtFechaRe;
 	private JTable table;
 	private JButton btnRegistrar;
 	private JButton btnActualizar;
@@ -74,7 +74,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		getContentPane().setLayout(null);
 		
 		JLabel lblMantenimientoAutor = new JLabel("Mantenimiento Autor");
-		lblMantenimientoAutor.setBounds(234, 45, 374, 55);
+		lblMantenimientoAutor.setBounds(236, 35, 374, 55);
 		lblMantenimientoAutor.setFont(new Font("Trebuchet MS", Font.BOLD, 37));
 		lblMantenimientoAutor.setBackground(Color.WHITE);
 		getContentPane().add(lblMantenimientoAutor);
@@ -99,13 +99,8 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		lblNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		getContentPane().add(lblNacionalidad);
 		
-		JLabel lblFechaRegistro = new JLabel("Fecha Registro");
-		lblFechaRegistro.setBounds(335, 170, 140, 32);
-		lblFechaRegistro.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		getContentPane().add(lblFechaRegistro);
-		
 		JLabel lblGrado = new JLabel("Grado");
-		lblGrado.setBounds(336, 219, 58, 32);
+		lblGrado.setBounds(335, 168, 58, 32);
 		lblGrado.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		getContentPane().add(lblGrado);
 		
@@ -133,31 +128,28 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		txtFechaNa.setBackground(Color.WHITE);
 		getContentPane().add(txtFechaNa);
 		
-		txtFechaRe = new JTextField();
-		txtFechaRe.setBounds(507, 179, 200, 20);
-		txtFechaRe.setColumns(10);
-		txtFechaRe.setBackground(Color.WHITE);
-		getContentPane().add(txtFechaRe);
-		
 		txtGrado = new JTextField();
-		txtGrado.setBounds(508, 227, 202, 22);
+		txtGrado.setBounds(507, 176, 202, 22);
 		txtGrado.setColumns(10);
 		txtGrado.setBackground(Color.WHITE);
 		getContentPane().add(txtGrado);
 		
-		btnRegistrar = new JButton("Registrar");
+		btnRegistrar = new JButton(" Registrar");
+		btnRegistrar.setIcon(new ImageIcon(FrmCrudAutor.class.getResource("/iconos/Add.gif")));
 		btnRegistrar.setBounds(732, 97, 135, 41);
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		getContentPane().add(btnRegistrar);
 		
-		btnActualizar = new JButton("Actualizar");
+		btnActualizar = new JButton(" Actualizar");
+		btnActualizar.setIcon(new ImageIcon(FrmCrudAutor.class.getResource("/iconos/Zoom.gif")));
 		btnActualizar.setBounds(732, 157, 135, 41);
 		btnActualizar.addActionListener(this);
 		btnActualizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		getContentPane().add(btnActualizar);
 		
-		btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton(" Eliminar");
+		btnEliminar.setIcon(new ImageIcon(FrmCrudAutor.class.getResource("/iconos/Delete.gif")));
 		btnEliminar.setBounds(732, 216, 135, 41);
 		btnEliminar.addActionListener(this);
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -186,7 +178,6 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		txtNombre.setText("");
 		txtApellido.setText("");
 	    txtFechaNa.setText("");
-		txtFechaRe.setText("");
 		txtNacionalidad.setText("");
 		txtGrado.setText("");
 	}
@@ -269,10 +260,9 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		txtNombre.setText(nom);
 		txtApellido.setText(ape);
 		txtFechaNa.setText(String.valueOf(fechaNA));
-		txtFechaRe.setText(String.valueOf(fechaRE));
 		txtNacionalidad.setText(naci);
 		txtGrado.setText(String.valueOf(grado));
-		
+	
 		System.out.println(">>> idSeleccionado -> " + idSeleccionado);
 		
 	}
@@ -281,7 +271,6 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		String nom  = txtNombre.getText();
 		String ape = txtApellido.getText();
 		String fecNa = txtFechaNa.getText();
-		String fecRe = txtFechaRe.getText();
 		String nac = txtNacionalidad.getText();
 		String gra = txtGrado.getText();
 		
@@ -301,16 +290,19 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 			mensaje("La fecha es YYYY-MM-dd");
 			return;
 		}
-		if (!fecRe.matches(Validaciones.FECHA)) {
+		/*if (!fecRe.matches(Validaciones.FECHA)) {
 			mensaje("La fecha es YYYY-MM-dd");
 			return;
-		}
+		}*/
+		
+		long millis=System.currentTimeMillis();  
+		java.sql.Date fecha=new java.sql.Date(millis);
 		
 		Autor obj = new Autor();
 		obj.setNombres(nom);
 		obj.setApellidos(ape);
 		obj.setFechaNacimiento(Date.valueOf(fecNa));
-		obj.setFechaRegistro(Date.valueOf(fecRe));
+		obj.setFechaRegistro(fecha);
 		obj.setNacionalidad(nac);
 		obj.setGrado(gra);
 		
@@ -329,7 +321,6 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		String nom  = txtNombre.getText();
 		String ape = txtApellido.getText();
 		String fecNa = txtFechaNa.getText();
-		String fecRe = txtFechaRe.getText();
 		String nac = txtNacionalidad.getText();
 		String gra = txtGrado.getText();
 		
@@ -353,10 +344,13 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 			mensaje("La fecha es YYYY-MM-dd");
 			return;
 		}
-		if (!fecRe.matches(Validaciones.FECHA)) {
+		/*if (!fecRe.matches(Validaciones.FECHA)) {
 			mensaje("La fecha es YYYY-MM-dd");
 			return;
-		}
+		}*/
+		
+		long millis=System.currentTimeMillis();  
+		java.sql.Date fecha=new java.sql.Date(millis); 
 		
 		Autor obj = new Autor();
 		
@@ -364,7 +358,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		obj.setNombres(nom);
 		obj.setApellidos(ape);
 		obj.setFechaNacimiento(Date.valueOf(fecNa));
-		obj.setFechaRegistro(Date.valueOf(fecRe));
+		obj.setFechaRegistro(fecha);
 		obj.setNacionalidad(nac);
 		obj.setGrado(gra);
 		
@@ -375,9 +369,9 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 			idSeleccionado = -1;
 			lista();
 			limpiarCajasTexto();
-			mensaje("Registro Exitoso");
+			mensaje("Actualización Exitosa");
 		}else {
-			mensaje("Error en el registro");
+			mensaje("Error la actualización");
 		}
 		
 	}
