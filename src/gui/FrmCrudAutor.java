@@ -1,32 +1,29 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Date;
+import java.util.List;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JScrollBar;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import java.awt.Rectangle;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Autor;
 import model.AutorModel;
 import util.Validaciones;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseListener;
-import java.sql.Date;
-import java.util.List;
-import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
 
 public class FrmCrudAutor  extends JInternalFrame implements ActionListener, MouseListener  {
 
@@ -253,8 +250,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		String nom = (String)table.getValueAt(fila, 1);
 		String ape = (String)table.getValueAt(fila, 2);
         Date  fechaNA = (Date) table.getValueAt(fila, 3);
-        Date fechaRE = (Date) table.getValueAt(fila, 4);
-		String naci = (String)table.getValueAt(fila, 5);
+        String naci = (String)table.getValueAt(fila, 5);
 		String grado = (String)table.getValueAt(fila, 6);
 		
 		txtNombre.setText(nom);

@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Date;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -218,7 +217,6 @@ public class FrmCrudLibro  extends JInternalFrame  {
 		String anio = (String) table.getValueAt(fila, 2);
 		String cate = (String) table.getValueAt(fila, 3);
 		String seri = (String) table.getValueAt(fila, 4);
-		Date fec = (Date) table.getValueAt(fila, 5);
 		String pais = (String) table.getValueAt(fila, 6);
 		
 		txtTitulo.setText(titu);
