@@ -21,6 +21,12 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import entidad.Opcion;
+import gui.FrmConsultaAlumno;
+import gui.FrmConsultaAutor;
+import gui.FrmConsultaLibro;
+import gui.FrmConsultaProveedor;
+import gui.FrmConsultaSala;
+import gui.FrmConsultaUsuario;
 import gui.FrmCrudAlumno;
 import gui.FrmCrudAutor;
 import gui.FrmCrudLibro;
@@ -33,6 +39,12 @@ import gui.FrmRegistroLibro;
 import gui.FrmRegistroProveedor;
 import gui.FrmRegistroSala;
 import gui.FrmRegistroUsuario;
+import gui.FrmReporteAlumno;
+import gui.FrmReporteAutor;
+import gui.FrmReporteLibro;
+import gui.FrmReporteProveedor;
+import gui.FrmReporteSala;
+import gui.FrmReporteUsuario;
 import model.UsuarioModel;
 import util.DatosGlobales;
 
@@ -55,21 +67,21 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	private JMenuItem mntRegSala;
 	private JMenuItem mntRegUsuario;
 	private JMenuItem mntRegProveedor;
-
+	
 	private JMenuItem mntCrudAlumno;
 	private JMenuItem mntCrudAutor;
 	private JMenuItem mntCrudLibro;
 	private JMenuItem mntCrudSala;
 	private JMenuItem mntCrudUsuario;
 	private JMenuItem mntCrudProveedor;
-
+	
 	private JMenuItem mntConsultaAlumno;
 	private JMenuItem mntConsultaAutor;
 	private JMenuItem mntConsultaLibro;
 	private JMenuItem mntConsultaSala;
 	private JMenuItem mntConsultaUsuario;
 	private JMenuItem mntConsultaProveedor;
-
+	
 	private JMenuItem mntReporteAlumno;
 	private JMenuItem mntReporteAutor;
 	private JMenuItem mntReporteLibro;
@@ -85,15 +97,26 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	public FrmRegistroUsuario frmRegistroUsuario = new FrmRegistroUsuario();
 	public FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor();
 
-
 	public FrmCrudAlumno frmCrudAlumno = new FrmCrudAlumno();
 	public FrmCrudAutor frmCrudAutor = new FrmCrudAutor();
 	public FrmCrudLibro frmCrudLibro = new FrmCrudLibro();
 	public FrmCrudSala frmCrudSala = new FrmCrudSala();
 	public FrmCrudUsuario frmCrudUsuario = new FrmCrudUsuario();
 	public FrmCrudProveedor frmCrudProveedor = new FrmCrudProveedor();
-	
-	// Formularios
+
+	public FrmConsultaAlumno frmConsultaAlumno = new FrmConsultaAlumno();
+	public FrmConsultaAutor frmConsultaAutor = new FrmConsultaAutor();
+	public FrmConsultaLibro frmConsultaLibro = new FrmConsultaLibro();
+	public FrmConsultaSala frmConsultaSala = new FrmConsultaSala();
+	public FrmConsultaUsuario frmConsultaUsuario = new FrmConsultaUsuario();
+	public FrmConsultaProveedor frmConsultaProveedor = new FrmConsultaProveedor();
+
+	public FrmReporteAlumno frmReporteAlumno = new FrmReporteAlumno();
+	public FrmReporteAutor frmReporteAutor = new FrmReporteAutor();
+	public FrmReporteLibro frmReporteLibro = new FrmReporteLibro();
+	public FrmReporteSala frmReporteSala = new FrmReporteSala();
+	public FrmReporteUsuario frmReporteUsuario = new FrmReporteUsuario();
+	public FrmReporteProveedor frmReporteProveedor = new FrmReporteProveedor();
 
 	public FrmPrincipal(String cad, int x, int y) {
 		super(cad);
@@ -162,8 +185,8 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		mntRegProveedor = new JMenuItem("Registro de Proveedor");
 		mntRegProveedor.setVisible(false);
 		mntRegProveedor.addActionListener(this);
-		mnAdministracin.add(mntRegProveedor);
-
+		mnAdministracin.add(mntRegProveedor);		
+		
 		// pc02
 		mntCrudAlumno = new JMenuItem("Crud Alumno");
 		mntCrudAlumno.setVisible(false);
@@ -190,11 +213,12 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		mntCrudUsuario.addActionListener(this);
 		mnCrud.add(mntCrudUsuario);
 
+
 		mntCrudProveedor = new JMenuItem("Crud Proveedor");
 		mntCrudProveedor.setVisible(false);
 		mntCrudProveedor.addActionListener(this);
 		mnCrud.add(mntCrudProveedor);
-
+		
 		// pc03
 		mntConsultaAlumno = new JMenuItem("Consulta Alumno");
 		mntConsultaAlumno.setVisible(false);
@@ -220,12 +244,13 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		mntConsultaUsuario.setVisible(false);
 		mntConsultaUsuario.addActionListener(this);
 		mnConsultas.add(mntConsultaUsuario);
-
+		
 		mntConsultaProveedor = new JMenuItem("Consulta Proveedor");
 		mntConsultaProveedor.setVisible(false);
 		mntConsultaProveedor.addActionListener(this);
 		mnConsultas.add(mntConsultaProveedor);
-
+		
+		
 		// pc03
 		mntReporteAlumno = new JMenuItem("Reporte Alumno");
 		mntReporteAlumno.setVisible(false);
@@ -262,7 +287,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		listaMenus.add(mnCrud);
 		listaMenus.add(mnConsultas);
 		listaMenus.add(mnReporte);
-
+		
 		// Paso 3: Se añade los items de menu a la lista
 		listaItemMenus.add(mntRegAlumno);
 		listaItemMenus.add(mntRegAutor);
@@ -277,21 +302,21 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		listaItemMenus.add(mntCrudSala);
 		listaItemMenus.add(mntCrudUsuario);
 		listaItemMenus.add(mntCrudProveedor);
-
+		
 		listaItemMenus.add(mntConsultaAlumno);
 		listaItemMenus.add(mntConsultaAutor);
 		listaItemMenus.add(mntConsultaLibro);
 		listaItemMenus.add(mntConsultaSala);
 		listaItemMenus.add(mntConsultaUsuario);
 		listaItemMenus.add(mntConsultaProveedor);
-
+		
 		listaItemMenus.add(mntReporteAlumno);
 		listaItemMenus.add(mntReporteAutor);
 		listaItemMenus.add(mntReporteLibro);
 		listaItemMenus.add(mntReporteSala);
 		listaItemMenus.add(mntReporteUsuario);
 		listaItemMenus.add(mntReporteProveedor);
-
+	
 		// Paso 4: Se los formularios al contenedor
 		desktop.add(frmRegistroAlumno);
 		desktop.add(frmRegistroAutor);
@@ -306,6 +331,20 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmCrudSala);
 		desktop.add(frmCrudUsuario);
 		desktop.add(frmCrudProveedor);
+
+		desktop.add(frmConsultaAlumno);
+		desktop.add(frmConsultaAutor);
+		desktop.add(frmConsultaLibro);
+		desktop.add(frmConsultaSala);
+		desktop.add(frmConsultaUsuario);
+		desktop.add(frmConsultaProveedor);
+
+		desktop.add(frmReporteAlumno);
+		desktop.add(frmReporteAutor);
+		desktop.add(frmReporteLibro);
+		desktop.add(frmReporteSala);
+		desktop.add(frmReporteUsuario);
+		desktop.add(frmReporteProveedor);		
 	}
 
 	public static void main(String[] args) {
@@ -351,7 +390,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		// PC01 Registros
+		//PC01 Registros
 		if (arg0.getSource() == mntRegAlumno) {
 			centrar(frmRegistroAlumno);
 			frmRegistroAlumno.setVisible(true);
@@ -378,71 +417,84 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		}
 
 		//PC02 Crud
-				if (arg0.getSource() == mntCrudAlumno) {
-					centrar(frmCrudAlumno);
-					frmCrudAlumno.setVisible(true);
-				}
-				if (arg0.getSource() == mntCrudAutor) {
-					centrar(frmCrudAutor);
-					frmCrudAutor.setVisible(true);
-				}
-				if (arg0.getSource() == mntCrudLibro) {
-					centrar(frmCrudLibro);
-					frmCrudLibro.setVisible(true);
-				}
-				if (arg0.getSource() == mntCrudSala) {
-					centrar(frmCrudSala);
-					frmCrudSala.setVisible(true);
-				}
-				if (arg0.getSource() == mntCrudUsuario) {
-					centrar(frmCrudUsuario);
-					frmCrudUsuario.setVisible(true);
-				}
-				if (arg0.getSource() == mntCrudProveedor) {
-					centrar(frmCrudProveedor);
-					frmCrudProveedor.setVisible(true);
-				}
+		if (arg0.getSource() == mntCrudAlumno) {
+			centrar(frmCrudAlumno);
+			frmCrudAlumno.setVisible(true);
+		}
+		if (arg0.getSource() == mntCrudAutor) {
+			centrar(frmCrudAutor);
+			frmCrudAutor.setVisible(true);
+		}
+		if (arg0.getSource() == mntCrudLibro) {
+			centrar(frmCrudLibro);
+			frmCrudLibro.setVisible(true);
+		}
+		if (arg0.getSource() == mntCrudSala) {
+			centrar(frmCrudSala);
+			frmCrudSala.setVisible(true);
+		}
+		if (arg0.getSource() == mntCrudUsuario) {
+			centrar(frmCrudUsuario);
+			frmCrudUsuario.setVisible(true);
+		}
+		if (arg0.getSource() == mntCrudProveedor) {
+			centrar(frmCrudProveedor);
+			frmCrudProveedor.setVisible(true);
+		}
 
-		// PC03 Consultas
+		//PC03 Consultas
 		if (arg0.getSource() == mntConsultaAlumno) {
-
+			centrar(frmConsultaAlumno);
+			frmConsultaAlumno.setVisible(true);
 		}
 		if (arg0.getSource() == mntConsultaAutor) {
-
+			centrar(frmConsultaAutor);
+			frmConsultaAutor.setVisible(true);
 		}
 		if (arg0.getSource() == mntConsultaLibro) {
-
+			centrar(frmConsultaLibro);
+			frmConsultaLibro.setVisible(true);
 		}
 		if (arg0.getSource() == mntConsultaSala) {
-
+			centrar(frmConsultaSala);
+			frmConsultaSala.setVisible(true);
 		}
 		if (arg0.getSource() == mntConsultaUsuario) {
-
+			centrar(frmConsultaUsuario);
+			frmConsultaUsuario.setVisible(true);
 		}
 		if (arg0.getSource() == mntConsultaProveedor) {
-
+			centrar(frmConsultaProveedor);
+			frmConsultaProveedor.setVisible(true);
 		}
-
-		// PC03 reportes
+		
+		//PC03 reportes
 		if (arg0.getSource() == mntReporteAlumno) {
-
+			centrar(frmReporteAlumno);
+			frmReporteAlumno.setVisible(true);
 		}
 		if (arg0.getSource() == mntReporteAutor) {
-
+			centrar(frmReporteAutor);
+			frmReporteAutor.setVisible(true);
 		}
 		if (arg0.getSource() == mntReporteLibro) {
-
+			centrar(frmReporteLibro);
+			frmReporteLibro.setVisible(true);
 		}
 		if (arg0.getSource() == mntReporteSala) {
-
+			centrar(frmReporteSala);
+			frmReporteSala.setVisible(true);
 		}
 		if (arg0.getSource() == mntReporteUsuario) {
-
+			centrar(frmReporteUsuario);
+			frmReporteUsuario.setVisible(true);
 		}
 		if (arg0.getSource() == mntReporteProveedor) {
-
+			centrar(frmReporteProveedor);
+			frmReporteProveedor.setVisible(true);
 		}
-
+				
+		
 	}
 
 	public void muestraOpciones() {
@@ -478,6 +530,6 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		Dimension ventana = frm.getSize();
 
 		int posX = (int) (pantalla.getWidth() - ventana.getWidth()) / 2;
-		frm.setLocation(posX, 80);
+		frm.setLocation(posX, 40);
 	}
 }
