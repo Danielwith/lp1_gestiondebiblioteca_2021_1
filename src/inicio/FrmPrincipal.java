@@ -47,6 +47,8 @@ import gui.FrmReporteSala;
 import gui.FrmReporteUsuario;
 import model.UsuarioModel;
 import util.DatosGlobales;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class FrmPrincipal extends JFrame implements WindowListener, ActionListener {
