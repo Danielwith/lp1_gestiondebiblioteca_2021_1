@@ -119,6 +119,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	public FrmReporteSala frmReporteSala = new FrmReporteSala();
 	public FrmReporteUsuario frmReporteUsuario = new FrmReporteUsuario();
 	public FrmReporteProveedor frmReporteProveedor = new FrmReporteProveedor();
+	private final JLabel lblNewLabel = new JLabel("New label");
 
 	public FrmPrincipal(String cad, int x, int y) {
 		super(cad);
@@ -129,6 +130,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 
 		desktop.setSize(1000, 500);
 		desktop.setBackground(Color.WHITE);
+	
 
 		getContentPane().add(desktop, BorderLayout.CENTER);
 
@@ -347,6 +349,10 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmReporteSala);
 		desktop.add(frmReporteUsuario);
 		desktop.add(frmReporteProveedor);		
+		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/estructura-abstracta-3d-gris-oscuro_3840x2160_xtrafondos.com.jpg")));
+		lblNewLabel.setBounds(0, -15, 1557, 851);
+		
+		desktop.add(lblNewLabel);
 	}
 
 	public static void main(String[] args) {
