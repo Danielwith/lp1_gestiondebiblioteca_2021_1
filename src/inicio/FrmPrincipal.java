@@ -126,7 +126,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		this.setResizable(false);
 
 		desktop.setSize(1000, 500);
-		desktop.setBackground(new Color(116, 88, 135));
+		desktop.setBackground(Color.WHITE);
 
 		getContentPane().add(desktop, BorderLayout.CENTER);
 
@@ -349,7 +349,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
+			UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
 
 			FrmPrincipal jf = new FrmPrincipal("Sistema de gestión de biblioteca", 900, 600);
 			jf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
