@@ -124,7 +124,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	public FrmPrincipal(String cad, int x, int y) {
 		super(cad);
 		this.setLocation(0, 0);
-		this.setSize(636, 365);
+		this.setSize(973, 659);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setResizable(false);
 
@@ -350,7 +350,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmReporteUsuario);
 		desktop.add(frmReporteProveedor);		
 		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/estructura-abstracta-3d-gris-oscuro_3840x2160_xtrafondos.com.jpg")));
-		lblNewLabel.setBounds(0, -15, 1557, 851);
+		lblNewLabel.setBounds(0, -15, 1920, 1080);
 		
 		desktop.add(lblNewLabel);
 	}
