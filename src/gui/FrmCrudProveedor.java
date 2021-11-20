@@ -1,28 +1,31 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.sql.Date;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Proveedor;
 import model.ProveedorModel;
 import util.Validaciones;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseListener;
-import java.sql.Date;
-import java.util.List;
-import java.awt.event.MouseEvent;
 
 public class FrmCrudProveedor  extends JInternalFrame implements ActionListener, MouseListener  {
 
@@ -41,6 +44,7 @@ public class FrmCrudProveedor  extends JInternalFrame implements ActionListener,
 	private JButton btnEliminar;
 	
 	private int idSeleccionado=-1;
+	int hoveredRow = -1, hoveredColumn = -1;
 
 
 	/**
@@ -181,6 +185,78 @@ public class FrmCrudProveedor  extends JInternalFrame implements ActionListener,
 		));
 		scrollPane.setViewportView(table);
 
+		//selecciona una sola fila
+
+		table.setRowSelectionAllowed(true);
+
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		//desabilita mover las columnas
+
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		//color de la fila seleccionada
+
+		table.setSelectionBackground(Color.BLUE);
+		
+		//tamano de la fila	
+
+				table.getColumnModel().getColumn(0).setPreferredWidth(15);
+
+				table.getColumnModel().getColumn(1).setPreferredWidth(100);
+
+				table.getColumnModel().getColumn(2).setPreferredWidth(100);
+
+				table.getColumnModel().getColumn(3).setPreferredWidth(80);
+
+				table.getColumnModel().getColumn(4).setPreferredWidth(120);
+
+				table.getColumnModel().getColumn(5).setPreferredWidth(90);
+
+				table.getColumnModel().getColumn(6).setPreferredWidth(120);
+				
+				table.getColumnModel().getColumn(7).setPreferredWidth(75);
+				
+				table.getColumnModel().getColumn(8).setPreferredWidth(100);
+
+				table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+				
+				/**/
+				table.addMouseMotionListener(new MouseMotionListener() {
+
+				    @Override
+
+				    public void mouseMoved(MouseEvent e) {
+
+				      Point p = e.getPoint();
+
+				      hoveredRow = table.rowAtPoint(p);
+
+				      hoveredColumn = table.columnAtPoint(p);
+
+				      table.setRowSelectionInterval(hoveredRow, hoveredRow);
+
+				      table.repaint();   
+
+				    }
+
+				    @Override
+
+				    public void mouseDragged(MouseEvent e) {
+
+				      hoveredRow = hoveredColumn = -1;
+
+				      table.repaint();
+
+				    }
+
+				  });
+				
+				 //No se pueda editar
+
+				  table.setDefaultEditor(Object.class, null);
+				
+		
 		lista();
 
 	}

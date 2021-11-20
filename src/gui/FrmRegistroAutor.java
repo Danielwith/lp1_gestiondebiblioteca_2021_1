@@ -6,8 +6,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.util.Arrays;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -23,7 +26,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombres;
 	private JTextField txtApellidos;
-	private JTextField txtNacionalidad;
+	private JComboBox<String> cboNacionalidad;
 	private JTextField txtFechaNacimiento;
 	private JTextField txtFechaRegistro;
 	private JTextField txtGrado;
@@ -85,11 +88,14 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		lblNacionalidad.setBounds(162, 200, 163, 22);
 		getContentPane().add(lblNacionalidad);
 		
-		txtNacionalidad = new JTextField();
-		txtNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtNacionalidad.setColumns(10);
-		txtNacionalidad.setBounds(360, 198, 256, 26);
-		getContentPane().add(txtNacionalidad);
+		String[] arrayPais =  new String[] {" [Seleccione] ","Perú", "Venezuela", "Argentina", "Alemania", "Cuba", "Holanda"};
+		Arrays.sort(arrayPais);
+		
+		cboNacionalidad = new JComboBox<String>();
+		cboNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cboNacionalidad.setModel(new DefaultComboBoxModel<String>(arrayPais));
+		cboNacionalidad.setBounds(360, 198, 256, 26);
+		getContentPane().add(cboNacionalidad);
 		
 		JLabel lblFechaNacimiento = new JLabel("FECHA NACIMIENTO:");
 		lblFechaNacimiento.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
@@ -156,7 +162,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		String apellidos = txtApellidos.getText();
 		String fechaNacimiento = txtFechaNacimiento.getText();
 		String fechaRegistro = txtFechaRegistro.getText();
-		String nacionalidad = txtNacionalidad.getText();
+		String nacionalidad = cboNacionalidad.getSelectedItem().toString();
 		String grado = txtGrado.getText();
 		
 		/*VALIDACIONES*/
@@ -166,8 +172,8 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		if(!apellidos.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El apellido es de 3 a 30 caracteres");
 		}
-		if(!nacionalidad.matches(Validaciones.TEXTO)) {
-			mensaje("El TEXTO es de 3 a 20 caracteres");
+		if(cboNacionalidad.getSelectedIndex() == 0) {
+			mensaje("Seleccione una nacionalidad");
 		}
 		if(!fechaNacimiento.matches(Validaciones.FECHA)) {
 			mensaje("La fecha es de formato yyyy-MM-dd");
