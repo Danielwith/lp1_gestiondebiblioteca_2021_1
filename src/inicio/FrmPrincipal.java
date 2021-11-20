@@ -14,6 +14,7 @@ import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -47,8 +48,6 @@ import gui.FrmReporteSala;
 import gui.FrmReporteUsuario;
 import model.UsuarioModel;
 import util.DatosGlobales;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class FrmPrincipal extends JFrame implements WindowListener, ActionListener {
@@ -349,7 +348,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmReporteSala);
 		desktop.add(frmReporteUsuario);
 		desktop.add(frmReporteProveedor);		
-		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/fondo.jpg")));
+		//lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/fondo.jpg")));
 		lblNewLabel.setBounds(0, -15, 1920, 1080);
 		
 		desktop.add(lblNewLabel);
