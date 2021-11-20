@@ -78,36 +78,36 @@ public class FrmCrudProveedor  extends JInternalFrame implements ActionListener,
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNombre.setBounds(53, 100, 58, 15);
+		lblNombre.setBounds(26, 101, 58, 15);
 		getContentPane().add(lblNombre);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
 		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblApellidos.setBounds(53, 138, 77, 14);
+		lblApellidos.setBounds(26, 139, 77, 14);
 		getContentPane().add(lblApellidos);
 		
 		JLabel lblDni = new JLabel("DNI");
-		lblDni.setBounds(53, 179, 46, 14);
+		lblDni.setBounds(26, 180, 46, 14);
 		getContentPane().add(lblDni);
 		
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(53, 217, 46, 14);
+		lblDireccion.setBounds(26, 218, 77, 14);
 		getContentPane().add(lblDireccion);
 		
 		JLabel lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(333, 101, 46, 14);
+		lblTelefono.setBounds(315, 102, 77, 14);
 		getContentPane().add(lblTelefono);
 		
 		JLabel lblCorreo = new JLabel("Correo");
-		lblCorreo.setBounds(333, 139, 46, 14);
+		lblCorreo.setBounds(315, 140, 77, 14);
 		getContentPane().add(lblCorreo);
 		
 		JLabel lblPais = new JLabel("Pais");
-		lblPais.setBounds(333, 179, 46, 14);
+		lblPais.setBounds(315, 180, 58, 15);
 		getContentPane().add(lblPais);
 		
 		JLabel lblFecha = new JLabel("Fecha Registro");
-		lblFecha.setBounds(333, 217, 77, 14);
+		lblFecha.setBounds(315, 218, 95, 14);
 		getContentPane().add(lblFecha);
 		
 		txtNombre = new JTextField();

@@ -155,4 +155,46 @@ public class SalaModel {
 		}
 		return salida;
 	}
+	public List<Sala> listaSalaPorNumero(String filtro) {
+		ArrayList<Sala> data = new ArrayList<Sala>();
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			// 1 Se crea la conexión
+			conn = MySqlDBConexion.getConexion();
+
+			// 2 Se prepara el SQL
+			String sql = "select * from sala where numero like ?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, filtro+"%");
+			System.out.println("SQL -> " + pstm);
+
+			// 2Se envía el SQL a la base de datos
+			rs = pstm.executeQuery();
+			Sala obj = null;
+			while (rs.next()) {
+				obj = new Sala();
+				obj.setIdSala(rs.getInt(1));
+				obj.setNumero(rs.getString(2));
+				obj.setPiso(rs.getInt(3));
+				obj.setCapacidad(rs.getString(4));
+				obj.setRecursos(rs.getString(5));
+				obj.setEstado(rs.getInt(6));
+				obj.setFechaRegistro(rs.getDate(7));
+				data.add(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null)
+					pstm.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return data;
+	}
 }

@@ -174,6 +174,47 @@ public class ProveedorModel {
 			}
 			return salida;
 		}
+	
+	
+	public List<Proveedor> listaProveedorPorNombre(String filtro){
+		ArrayList<Proveedor> salida= new ArrayList<Proveedor>();
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		try {
+			conn= new MiConexion().getConexion();
+			
+			String sql = "select * from proveedor where nombres like ?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, filtro+"%");
+			System.out.println("SQL -> " + pstm);
+			
+			rs = pstm.executeQuery();
+			Proveedor obj = null;
+			while(rs.next()) {
+				obj = new Proveedor();
+				obj.setIdproveedor(rs.getInt(1));
+				obj.setNombres(rs.getString(2));
+				obj.setApellidos(rs.getString(3));
+				obj.setDni(rs.getString(4));
+				obj.setDireccion(rs.getString(5));
+				obj.setTelefono(rs.getString(6));
+				obj.setCorreo(rs.getString(7));
+				obj.setPais(rs.getString(8));
+				obj.setFechaRegistro(rs.getDate(9));
+				salida.add(obj);
+			}} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstm != null) pstm.close();
+					if (conn != null) conn.close();
+				} catch (Exception e2) {}
+			}
+			return salida;
+		}
+	
 					
 	}
 	
