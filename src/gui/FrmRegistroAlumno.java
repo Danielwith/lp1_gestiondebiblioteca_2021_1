@@ -120,7 +120,6 @@ public class FrmRegistroAlumno  extends JInternalFrame implements ActionListener
 		getContentPane().add(txtfechanacimiento);
 		
 		btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\Carlo\\OneDrive\\Escritorio\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Sesion 1\\iconos\\Accept.gif"));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setBounds(342, 414, 205, 55);
 		getContentPane().add(btnRegistrar);
