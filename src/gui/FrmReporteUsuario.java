@@ -2,19 +2,24 @@ package gui;
 
 import javax.swing.JFrame;
 
+
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import javax.swing.border.TitledBorder;
+
 
 import entidad.RegistrarUsuario;
 import model.RegistroUsuarioModel;
 
-import javax.swing.border.LineBorder;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
+
 import java.util.List;
 import java.awt.event.ActionEvent;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -22,6 +27,7 @@ import reporte.GeneradorReporte;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
 import javax.swing.JTextField;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.BorderLayout;
 
@@ -68,7 +74,6 @@ public class FrmReporteUsuario extends JInternalFrame implements ActionListener 
 		panelReporte.setBounds(10, 109, 895, 401);
 		getContentPane().add(panelReporte);
 		panelReporte.setLayout(new BorderLayout(0, 0));
-
 
 	}
 	public void actionPerformed(ActionEvent e) {
