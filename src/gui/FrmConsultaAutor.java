@@ -1,21 +1,21 @@
 package gui;
 
+import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Autor;
 import model.AutorModel;
-import java.util.List;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 
 public class FrmConsultaAutor extends JInternalFrame implements KeyListener {
 
