@@ -48,6 +48,7 @@ import gui.FrmReporteSala;
 import gui.FrmReporteUsuario;
 import model.UsuarioModel;
 import util.DatosGlobales;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class FrmPrincipal extends JFrame implements WindowListener, ActionListener {
@@ -348,6 +349,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmReporteSala);
 		desktop.add(frmReporteUsuario);
 		desktop.add(frmReporteProveedor);		
+		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/estructura-abstracta-3d-gris-oscuro_3840x2160_xtrafondos.com (1).jpg")));
 		//lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/fondo.jpg")));
 		lblNewLabel.setBounds(0, -15, 1920, 1080);
 		
