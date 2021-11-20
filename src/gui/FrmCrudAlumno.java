@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 import java.sql.Date;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -123,19 +122,16 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 		getContentPane().add(txtfechanacimiento);
 		
 		btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\Carlo\\OneDrive\\Escritorio\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Sesion 1\\iconos\\Accept.gif"));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setBounds(719, 136, 135, 41);
 		getContentPane().add(btnRegistrar);
 		
 		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setIcon(new ImageIcon("C:\\Users\\Carlo\\OneDrive\\Escritorio\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Sesion 1\\iconos\\Up.gif"));
 		btnActualizar.addActionListener(this);
 		btnActualizar.setBounds(719, 193, 135, 41);
 		getContentPane().add(btnActualizar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setIcon(new ImageIcon("C:\\Users\\Carlo\\OneDrive\\Escritorio\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Sesion 1\\iconos\\Delete.gif"));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(719, 255, 135, 41);
 		getContentPane().add(btnEliminar);

@@ -1,27 +1,22 @@
 package gui;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Sala;
 import model.SalaModel;
-import util.Validaciones;
-
-import java.awt.event.KeyListener;
-import java.sql.Date;
-import java.util.List;
-import java.awt.event.KeyEvent;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class FrmConsultaSala extends JInternalFrame implements ActionListener {
 

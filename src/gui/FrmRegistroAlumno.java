@@ -5,21 +5,14 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.Date;
-import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 import entidad.RegistroAlumno;
 import model.AlumnoModel;
@@ -36,7 +29,6 @@ public class FrmRegistroAlumno  extends JInternalFrame implements ActionListener
 
 	
 	//Es el Id que se obtiene al seleccionar la fila
-		private int idSeleccionado = -1; 
 		private JTextField txtnombres;
 
 
@@ -120,7 +112,6 @@ public class FrmRegistroAlumno  extends JInternalFrame implements ActionListener
 		getContentPane().add(txtfechanacimiento);
 		
 		btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\Carlo\\OneDrive\\Escritorio\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Sesion 1\\iconos\\Accept.gif"));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setBounds(342, 414, 205, 55);
 		getContentPane().add(btnRegistrar);

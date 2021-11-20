@@ -349,7 +349,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmReporteSala);
 		desktop.add(frmReporteUsuario);
 		desktop.add(frmReporteProveedor);		
-		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/estructura-abstracta-3d-gris-oscuro_3840x2160_xtrafondos.com.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/fondo.jpg")));
 		lblNewLabel.setBounds(0, -15, 1920, 1080);
 		
 		desktop.add(lblNewLabel);
