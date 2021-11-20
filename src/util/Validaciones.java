@@ -24,6 +24,7 @@ public class Validaciones {
 	
 	//Validaciones para Registro Alumno//
 	public static final String TEXTOALUMNO = "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,30}";
+	public static final String TEXTOPROV = "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{1,20}";
 	
 
 }

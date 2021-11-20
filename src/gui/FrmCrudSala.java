@@ -162,9 +162,60 @@ public class FrmCrudSala  extends JInternalFrame implements ActionListener, Mous
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Numero", "Piso", "Capacidad", "Recursos", "Estado", "Fecha Registro"
+				"ID", "Número", "Piso", "Capacidad", "Recursos", "Estado", "Fecha Registro"
 			}
 		));
+		
+
+		//alineación
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+		table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+		
+		
+		//tamano de la fila	
+		table.getColumnModel().getColumn(0).setPreferredWidth(15);
+		table.getColumnModel().getColumn(1).setPreferredWidth(120);
+		table.getColumnModel().getColumn(2).setPreferredWidth(30);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
+		table.getColumnModel().getColumn(4).setPreferredWidth(250);
+		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		table.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		
+		//selecciona una sola fila
+		table.setRowSelectionAllowed(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		//desabilita mover las columnas
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		//color de la fila seleccionada
+		table.setSelectionBackground(Color.GREEN);
+		
+		//el mouse over
+	    table.addMouseMotionListener(new MouseMotionListener() {
+	        @Override
+	        public void mouseMoved(MouseEvent e) {
+	            Point p = e.getPoint();
+	            hoveredRow = table.rowAtPoint(p);
+	            hoveredColumn = table.columnAtPoint(p);
+	            table.setRowSelectionInterval(hoveredRow, hoveredRow);
+	            table.repaint();    
+	        }
+	        @Override
+	        public void mouseDragged(MouseEvent e) {
+	            hoveredRow = hoveredColumn = -1;
+	            table.repaint();
+	        }
+	    });
+	    
+	    //No se pueda editar
+	    table.setDefaultEditor(Object.class, null);
+	    
 		scrollPane.setViewportView(table);
 
 		lista();
