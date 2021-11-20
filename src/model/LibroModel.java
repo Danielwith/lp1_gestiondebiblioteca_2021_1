@@ -113,7 +113,7 @@ public class LibroModel {
 
 			String sql = "SELECT * FROM libro";
 			pstm = conn.prepareStatement(sql);
-			log.info("SQL -> " + pstm);
+			System.out.println("SQL -> " + pstm);
 			
 			rs = pstm.executeQuery();
 			Libro obj=null;

@@ -3,8 +3,10 @@ package model;
 import java.sql.Connection;
 
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -211,7 +213,51 @@ public class RegistroUsuarioModel {
 		return salida;
 
 	}
-	
+	public List<RegistrarUsuario> listaUsuarioPorNomre(String filtro) {
+		ArrayList<RegistrarUsuario> data = new ArrayList<RegistrarUsuario>();
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null; //Trae la data de la BD
+		try {
+			con =new MiConexion().getConexion();
+			String sql ="select * from usuario where nombre like ?";
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, filtro+"%");
+			System.out.println("SQL-->" + pstm);
+			
+			//En rs se trae los datos de la BD segun el SQL
+			rs = pstm.executeQuery();
+			
+			//Se pasa la data del rs al ArrayList(data)
+			RegistrarUsuario c = null;
+			while(rs.next()){
+				c = new RegistrarUsuario();
+				
+				// Se colocan los campos de la base de datos
+				c.setIdUsuario(rs.getInt("idUsuario"));
+				c.setNombreUsuario(rs.getString("nombre"));
+				c.setApellidoUsuario(rs.getString("apellido"));
+				c.setDNI(rs.getInt("dni"));
+				c.setLogin(rs.getString("login"));
+				c.setPassword(rs.getString("password"));
+				c.setCorreo(rs.getString("correo"));
+				c.setFechaNacimientoUsuario(rs.getDate("fechaNacimiento"));
+				c.setDirección(rs.getString("direccion"));
+				data.add(c);
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null)pstm.close();
+				if (con != null)con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return data;
+	}
 		
 	}
 

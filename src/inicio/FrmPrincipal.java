@@ -47,6 +47,8 @@ import gui.FrmReporteSala;
 import gui.FrmReporteUsuario;
 import model.UsuarioModel;
 import util.DatosGlobales;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class FrmPrincipal extends JFrame implements WindowListener, ActionListener {
@@ -117,16 +119,18 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	public FrmReporteSala frmReporteSala = new FrmReporteSala();
 	public FrmReporteUsuario frmReporteUsuario = new FrmReporteUsuario();
 	public FrmReporteProveedor frmReporteProveedor = new FrmReporteProveedor();
+	private final JLabel lblNewLabel = new JLabel("New label");
 
 	public FrmPrincipal(String cad, int x, int y) {
 		super(cad);
 		this.setLocation(0, 0);
-		this.setSize(636, 365);
+		this.setSize(973, 659);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setResizable(false);
 
 		desktop.setSize(1000, 500);
-		desktop.setBackground(new Color(116, 88, 135));
+		desktop.setBackground(Color.WHITE);
+	
 
 		getContentPane().add(desktop, BorderLayout.CENTER);
 
@@ -345,11 +349,15 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		desktop.add(frmReporteSala);
 		desktop.add(frmReporteUsuario);
 		desktop.add(frmReporteProveedor);		
+		lblNewLabel.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/iconos/estructura-abstracta-3d-gris-oscuro_3840x2160_xtrafondos.com.jpg")));
+		lblNewLabel.setBounds(0, -15, 1920, 1080);
+		
+		desktop.add(lblNewLabel);
 	}
 
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
+			UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
 
 			FrmPrincipal jf = new FrmPrincipal("Sistema de gestión de biblioteca", 900, 600);
 			jf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

@@ -187,6 +187,61 @@ public class AutorModel {
 		return salida;
 	}
 	
+	public List<Autor> listaAutorPorNombre(String filtro) {
+		ArrayList<Autor> salida = new  ArrayList<Autor>();
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null; 
+		
+		try {
+			
+			con = MySqlDBConexion.getConexion();
+			
+			String sql = "select * from autor where nombres like ?";
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, filtro + "%");
+			
+			System.out.println("SQL -- >" + pstm);
+			
+				
+			rs = pstm.executeQuery();
+			
+			Autor obj = null;
+			while (rs.next()) {
+				obj = new Autor();
+				
+				obj.setIdCodigo(rs.getInt("idAutor"));
+				obj.setNombres(rs.getString("nombres"));
+				obj.setApellidos(rs.getString("apellidos"));
+				obj.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+				obj.setFechaRegistro(rs.getDate("fechaRegistro"));
+				obj.setNacionalidad(rs.getString("nacionalidad"));
+				obj.setGrado(rs.getString("grado"));
+				
+				/*obj.setIdCodigo(rs.getInt(1));
+				obj.setNombres(rs.getString(2));
+				obj.setApellidos(rs.getString(3));
+				obj.setFechaNacimiento(rs.getDate(4));
+				obj.setFechaRegistro(rs.getDate(5));
+				obj.setNacionalidad(rs.getString(6));
+				obj.setGrado(rs.getString(7));*/
+				
+				salida.add(obj);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstm != null) pstm.close();
+				if (con != null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	
+	return salida;
+
+	}
 	
 }

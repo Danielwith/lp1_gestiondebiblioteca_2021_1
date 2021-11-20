@@ -151,6 +151,7 @@ public class AlumnoModel {
 				
 				
 				String sql = "update alumno set nombres=?, apellidos=?, dni=?, correo=?, fechaNacimiento=?  where idAlumno=?";
+				
 				psmt = conn.prepareStatement(sql);
 				
 				psmt.setString(1, obj.getNombres());
@@ -181,6 +182,50 @@ public class AlumnoModel {
 				
 			return salida;
 		}
+		
+		//Consulta alumno
+		public List<RegistroAlumno> listaAlumnoPorConsultaNombre(String filtro) {
+			ArrayList<RegistroAlumno> salida = new  ArrayList<RegistroAlumno>();
+			Connection con = null;
+			PreparedStatement pstm = null;
+			ResultSet rs = null; // trae la data de la BD
+			
+			try {
+				
+				con = MySqlDBConexion.getConexion();
+				
+				String sql = "select * from alumno where nombres like ?";
+				pstm = con.prepareStatement(sql);
+				pstm.setString(1, filtro+"%");
+				System.out.println("SQL -- >" + pstm);
+				
+				// en rs se trae los datos de la BD segun el SQL	
+				rs = pstm.executeQuery();
+				RegistroAlumno obj = null;
+				while (rs.next()) {
+					obj = new RegistroAlumno();
+					obj.setIdAlumno(rs.getInt(1));
+					obj.setNombres(rs.getString(2));
+					obj.setApellido(rs.getString(3));
+					obj.setDni(rs.getInt(4));
+					obj.setCorreo(rs.getString(5));
+					obj.setFechanacimiento(rs.getDate(6));
+					salida.add(obj);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (pstm != null) pstm.close();
+					if (con != null) con.close();
+				} catch (Exception e2) {}
+			}
+		
+		return salida;
+
+	}
+		
 		
 
 }

@@ -152,6 +152,7 @@ public class FrmRegistroUsuario extends JInternalFrame implements ActionListener
 	public void mensaje(String ms) {
 		JOptionPane.showMessageDialog(this, ms);
 	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 		String nomUsu = txtNoUsu.getText();
@@ -202,5 +203,12 @@ public class FrmRegistroUsuario extends JInternalFrame implements ActionListener
 		} else {
 			mensaje("Error en el registro");
 		}
+	}
+	void limpiarCajasTexto() {
+		txtNoUsu.setText("");
+		txtApeUsu.setText("");
+		txtDNI.setText("");
+	    txtCorreo.setText("");
+		txtFecNaciUsu.setText("");
 	}
 }

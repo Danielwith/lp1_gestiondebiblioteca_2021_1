@@ -28,7 +28,6 @@ import util.Validaciones;
 public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, MouseListener  {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField txtnombres;
 	private JTextField txtapellido;
 	private JTextField txtdni;
 	private JTextField txtcorreo;
@@ -41,6 +40,7 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 	
 	//Es el Id que se obtiene al seleccionar la fila
 		private int idSeleccionado = -1; 
+		private JTextField txtnombres;
 
 
 	/**
@@ -102,12 +102,6 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 		lblFechanac.setBounds(52, 326, 249, 24);
 		getContentPane().add(lblFechanac);
 		
-		txtnombres = new JTextField();
-		txtnombres.setColumns(10);
-		txtnombres.setBackground(Color.WHITE);
-		txtnombres.setBounds(298, 139, 278, 20);
-		getContentPane().add(txtnombres);
-		
 		txtapellido = new JTextField();
 		txtapellido.setColumns(10);
 		txtapellido.setBounds(298, 178, 278, 20);
@@ -161,6 +155,11 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 		));
 		table.getColumnModel().getColumn(5).setPreferredWidth(111);
 		scrollPane.setViewportView(table);
+		
+		txtnombres = new JTextField();
+		txtnombres.setColumns(10);
+		txtnombres.setBounds(298, 139, 278, 20);
+		getContentPane().add(txtnombres);
 
 		lista();
 

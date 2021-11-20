@@ -1,36 +1,43 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Date;
+import java.util.List;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import entidad.RegistroAlumno;
 import model.AlumnoModel;
 import util.Validaciones;
 
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import java.awt.SystemColor;
-import java.awt.Color;
-
-public class FrmRegistroAlumno extends JInternalFrame implements ActionListener  {
+public class FrmRegistroAlumno  extends JInternalFrame implements ActionListener  {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField txtnombres;
 	private JTextField txtapellidos;
+	private JTextField txtdni;
 	private JTextField txtcorreo;
 	private JTextField txtfechanacimiento;
 	private JButton btnRegistrar;
-	private JLabel lblNewLabel_2;
-	private JTextField txtdni;
+
+	
+	//Es el Id que se obtiene al seleccionar la fila
+		private int idSeleccionado = -1; 
+		private JTextField txtnombres;
 
 
 	/**
@@ -40,7 +47,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrmRegistroAlumno frame = new FrmRegistroAlumno();
+					FrmRegistroUsuario frame = new FrmRegistroUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,90 +56,93 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		});
 	}
 
-	
 	/**
 	 * Create the frame.
 	 */
 	public FrmRegistroAlumno() {
-		getContentPane().setBackground(new Color(255, 250, 240));
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setMaximizable(true);
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("Ingreso de Alumno");
-		setBounds(100, 100, 900, 550);
+		setTitle("Mantenimiento de Alumno");
+		setBounds(100, 100, 911, 552);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Registro Alumno");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\carlos\\Desktop\\CIBERTEC\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Proyecto\\Iconos 2\\Boy.gif"));
-		lblNewLabel.setBackground(SystemColor.text);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 37));
-		lblNewLabel.setBounds(287, 25, 335, 55);
-		getContentPane().add(lblNewLabel);
+		JLabel lblMantenimientoAlumno = new JLabel("Registro Alumno");
+		lblMantenimientoAlumno.setFont(new Font("Times New Roman", Font.BOLD, 37));
+		lblMantenimientoAlumno.setBackground(Color.WHITE);
+		lblMantenimientoAlumno.setBounds(298, 21, 486, 55);
+		getContentPane().add(lblMantenimientoAlumno);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nombres");
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblNewLabel_1.setBounds(32, 114, 135, 24);
-		getContentPane().add(lblNewLabel_1);
+		JLabel lblNombre = new JLabel("Nombres");
+		lblNombre.setFont(new Font("Times New Roman", Font.PLAIN, 29));
+		lblNombre.setBounds(52, 139, 135, 24);
+		getContentPane().add(lblNombre);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Apellidos");
-		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblNewLabel_1_1.setBounds(32, 159, 135, 41);
-		getContentPane().add(lblNewLabel_1_1);
+		JLabel lblApellido = new JLabel("Apellidos");
+		lblApellido.setFont(new Font("Times New Roman", Font.PLAIN, 29));
+		lblApellido.setBounds(52, 178, 135, 41);
+		getContentPane().add(lblApellido);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Correo");
-		lblNewLabel_1_2.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblNewLabel_1_2.setBounds(32, 269, 135, 24);
-		getContentPane().add(lblNewLabel_1_2);
+		JLabel lblDni = new JLabel("Dni");
+		lblDni.setFont(new Font("Times New Roman", Font.PLAIN, 29));
+		lblDni.setBounds(52, 229, 135, 24);
+		getContentPane().add(lblDni);
 		
-		JLabel lblNewLabel_1_3 = new JLabel("Fecha Nacimiento");
-		lblNewLabel_1_3.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblNewLabel_1_3.setBounds(32, 327, 249, 24);
-		getContentPane().add(lblNewLabel_1_3);
+		JLabel lblCorreo = new JLabel("Correo");
+		lblCorreo.setFont(new Font("Times New Roman", Font.PLAIN, 29));
+		lblCorreo.setBounds(52, 276, 135, 24);
+		getContentPane().add(lblCorreo);
 		
-		txtnombres = new JTextField();
-		txtnombres.setBackground(SystemColor.text);
-		txtnombres.setBounds(287, 124, 278, 20);
-		getContentPane().add(txtnombres);
-		txtnombres.setColumns(10);
+		JLabel lblFechanac = new JLabel("Fecha Nacimiento");
+		lblFechanac.setFont(new Font("Times New Roman", Font.PLAIN, 29));
+		lblFechanac.setBounds(52, 326, 249, 24);
+		getContentPane().add(lblFechanac);
 		
 		txtapellidos = new JTextField();
 		txtapellidos.setColumns(10);
-		txtapellidos.setBounds(287, 177, 278, 20);
+		txtapellidos.setBounds(298, 178, 278, 20);
 		getContentPane().add(txtapellidos);
+		
+		txtdni = new JTextField();
+		txtdni.setColumns(10);
+		txtdni.setBounds(298, 222, 278, 20);
+		getContentPane().add(txtdni);
 		
 		txtcorreo = new JTextField();
 		txtcorreo.setColumns(10);
-		txtcorreo.setBounds(287, 279, 278, 20);
+		txtcorreo.setBounds(298, 276, 278, 20);
 		getContentPane().add(txtcorreo);
 		
 		txtfechanacimiento = new JTextField();
 		txtfechanacimiento.setColumns(10);
-		txtfechanacimiento.setBounds(287, 334, 278, 20);
+		txtfechanacimiento.setBounds(298, 334, 278, 20);
 		getContentPane().add(txtfechanacimiento);
 		
 		btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\carlos\\Desktop\\CIBERTEC\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Proyecto\\Iconos 2\\Download.gif"));
+		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\Carlo\\OneDrive\\Escritorio\\Ciclo 3 - 2021-ll\\Lenguaje de Programacion l\\Sesion 1\\iconos\\Accept.gif"));
 		btnRegistrar.addActionListener(this);
-		btnRegistrar.setBounds(363, 448, 202, 61);
+		btnRegistrar.setBounds(342, 414, 205, 55);
 		getContentPane().add(btnRegistrar);
 		
-		lblNewLabel_2 = new JLabel("Dni");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblNewLabel_2.setBounds(32, 218, 135, 24);
-		getContentPane().add(lblNewLabel_2);
-		
-		txtdni = new JTextField();
-		txtdni.setColumns(10);
-		txtdni.setBounds(287, 222, 278, 20);
-		getContentPane().add(txtdni);
+		txtnombres = new JTextField();
+		txtnombres.setColumns(10);
+		txtnombres.setBounds(298, 139, 278, 20);
+		getContentPane().add(txtnombres);
 
 		
 
 	}
-
+	
 
 	
+	void limpiarCajasTexto() {
+		txtnombres.setText("");
+		txtapellidos.setText("");
+		txtdni.setText("");
+	    txtcorreo.setText("");
+		txtfechanacimiento.setText("");
+	}
 	
 
 	public void mensaje(String ms) {
@@ -140,11 +150,10 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnRegistrar) {
-			do_btnRegistrar_actionPerformed(e);
+			actionPerformedBtnRegistrarJButton(e);
 		}
 	}
-	protected void do_btnRegistrar_actionPerformed(ActionEvent e) {
-		
+	protected void actionPerformedBtnRegistrarJButton(ActionEvent e) {
 		String nombres = txtnombres.getText();
 		String apellidos = txtapellidos.getText();
 		String dni = txtdni.getText();
@@ -156,7 +165,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		
 		if(!nombres.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El nombre es de 3 a 30 caracteres");
-			
+			return;
 		}
 		if(!apellidos.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El apellido es de 3 a 30 caracteres");
@@ -190,14 +199,18 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		
 		if(salida>0) {
 			mensaje("Registro exitoso");
+			limpiarCajasTexto();
 		}
 		else
 		{
 			mensaje("Registro Fallido");
 		}
 		
-		
-		
-		
+		}
 	}
-}
+
+	
+	
+
+
+
