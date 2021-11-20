@@ -82,8 +82,8 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 	protected void actionPerformedBtnFiltrarJButton(ActionEvent e) {
 		String nombre= txtFiltro.getText();
 		
-		if (!nombre.matches(Validaciones.TEXTO)) {
-			mensaje("Ingrese una nombre apartir de 2 caracteres");
+		if (!nombre.matches(Validaciones.TEXTOPROV)) {
+			mensaje("Ingresa una letra o un nombre");
 			return;
 		}
 		
