@@ -63,7 +63,7 @@ public class FrmConsultaProveedor extends JInternalFrame implements KeyListener 
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Nombres", "Apellidos", "dni", "Direccion", "Telefono", "Correo", "Pais", "fechaRegistro"
+				"ID", "Nombres", "Apellidos", "DNI", "Dirección", "Telefono", "Correo", "País", "Fecha Registro"
 			}
 		));
 		

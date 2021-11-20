@@ -180,7 +180,7 @@ public class FrmCrudProveedor  extends JInternalFrame implements ActionListener,
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Nombres", "Apellidos", "DNI", "Dirreccion", "Telefono", "Correo", "Pais", "Fecha Registro"
+				"ID", "Nombres", "Apellidos", "DNI", "Dirrección", "Telefono", "Correo", "País", "Fecha Registro"
 			}
 		));
 		scrollPane.setViewportView(table);
