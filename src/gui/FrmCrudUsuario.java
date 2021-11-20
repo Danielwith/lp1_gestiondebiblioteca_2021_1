@@ -255,7 +255,7 @@ public class FrmCrudUsuario  extends JInternalFrame implements MouseListener, Ac
 		//selecciona una sola fila
 
 		table.setRowSelectionAllowed(true);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);				
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
 		
 		//desabilita mover las columnas

@@ -111,6 +111,9 @@ public class FrmConsultaUsuario extends JInternalFrame implements KeyListener {
 
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 			
+			
+			
+			
 			//alineación
 
 			DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
