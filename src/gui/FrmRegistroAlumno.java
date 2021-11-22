@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import entidad.RegistroAlumno;
 import model.AlumnoModel;
 import util.Validaciones;
+import javax.swing.ImageIcon;
 
 public class FrmRegistroAlumno  extends JInternalFrame implements ActionListener  {
 
@@ -93,32 +94,33 @@ public class FrmRegistroAlumno  extends JInternalFrame implements ActionListener
 		
 		txtapellidos = new JTextField();
 		txtapellidos.setColumns(10);
-		txtapellidos.setBounds(298, 178, 278, 20);
+		txtapellidos.setBounds(298, 178, 278, 24);
 		getContentPane().add(txtapellidos);
 		
 		txtdni = new JTextField();
 		txtdni.setColumns(10);
-		txtdni.setBounds(298, 222, 278, 20);
+		txtdni.setBounds(298, 222, 278, 24);
 		getContentPane().add(txtdni);
 		
 		txtcorreo = new JTextField();
 		txtcorreo.setColumns(10);
-		txtcorreo.setBounds(298, 276, 278, 20);
+		txtcorreo.setBounds(298, 272, 278, 24);
 		getContentPane().add(txtcorreo);
 		
 		txtfechanacimiento = new JTextField();
 		txtfechanacimiento.setColumns(10);
-		txtfechanacimiento.setBounds(298, 334, 278, 20);
+		txtfechanacimiento.setBounds(298, 326, 278, 24);
 		getContentPane().add(txtfechanacimiento);
 		
 		btnRegistrar = new JButton("Registrar");
+		btnRegistrar.setIcon(new ImageIcon(FrmRegistroAlumno.class.getResource("/iconos/Add.gif")));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setBounds(342, 414, 205, 55);
 		getContentPane().add(btnRegistrar);
 		
 		txtnombres = new JTextField();
 		txtnombres.setColumns(10);
-		txtnombres.setBounds(298, 139, 278, 20);
+		txtnombres.setBounds(298, 135, 278, 24);
 		getContentPane().add(txtnombres);
 
 		
