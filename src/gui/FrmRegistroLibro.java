@@ -59,7 +59,7 @@ public class FrmRegistroLibro extends JInternalFrame  {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 45));
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Titulo:");
+		JLabel lblNewLabel_1 = new JLabel("T\u00EDtulo:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(259, 142, 104, 27);
 		getContentPane().add(lblNewLabel_1);
@@ -69,7 +69,7 @@ public class FrmRegistroLibro extends JInternalFrame  {
 		lblNewLabel_2.setBounds(259, 192, 104, 26);
 		getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Categoria:");
+		JLabel lblNewLabel_3 = new JLabel("Categor\u00EDa:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel_3.setBounds(259, 237, 104, 46);
 		getContentPane().add(lblNewLabel_3);
@@ -79,7 +79,7 @@ public class FrmRegistroLibro extends JInternalFrame  {
 		lblNewLabel_4.setBounds(259, 293, 104, 38);
 		getContentPane().add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Pais:");
+		JLabel lblNewLabel_5 = new JLabel("Pa\u00EDs:");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel_5.setBounds(259, 344, 104, 26);
 		getContentPane().add(lblNewLabel_5);
