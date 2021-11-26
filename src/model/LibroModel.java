@@ -104,7 +104,7 @@ public class LibroModel {
 	}
 	
 	public List<Libro> listarLibro() {
-		ArrayList<Libro> salida=new ArrayList<Libro>();
+		ArrayList<Libro> lista=new ArrayList<Libro>();
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -126,7 +126,7 @@ public class LibroModel {
 				obj.setSerie(rs.getString(5));
 				obj.setFechaRegistro(rs.getDate(6));
 				obj.setPais(rs.getString(7));
-				salida.add(obj);
+				lista.add(obj);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,6 +136,43 @@ public class LibroModel {
 				if (conn != null) conn.close();
 			} catch (Exception e2) {}
 		}
-		return salida;
+		return lista;
+	}
+	
+	public List<Libro> listarLibrosPorNombre(String nombre){
+		ArrayList<Libro> lista = new ArrayList<Libro>();
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			conn = MySqlDBConexion.getConexion();
+			String sql = "select * from libro where titulo like ?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, nombre+"%");
+			System.out.println("SQL -> " + pstm);
+			
+			rs = pstm.executeQuery();
+			Libro obj = null;
+			while(rs.next()) {
+				obj = new Libro();
+				obj.setIdLibro(rs.getInt(1));
+				obj.setTitulo(rs.getString(2));
+				obj.setAnio(rs.getString(3));
+				obj.setCategoria(rs.getString(4));
+				obj.setSerie(rs.getString(5));
+				obj.setFechaRegistro(rs.getDate(6));
+				obj.setPais(rs.getString(7));
+				lista.add(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null) pstm.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
+		}
+		
+		return lista;
 	}
 }

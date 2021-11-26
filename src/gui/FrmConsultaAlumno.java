@@ -98,7 +98,7 @@ public class FrmConsultaAlumno extends JInternalFrame implements KeyListener {
 				table.getTableHeader().setReorderingAllowed(false);
 				
 				//color de la fila seleccionada
-				table.setSelectionBackground(Color.GREEN);
+				table.setSelectionBackground(Color.RED);
 				
 				//el mouse over
 			    table.addMouseMotionListener(new MouseMotionListener() {

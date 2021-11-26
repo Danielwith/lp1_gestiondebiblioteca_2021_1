@@ -1,11 +1,14 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -16,6 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Libro;
@@ -33,6 +38,7 @@ public class FrmCrudLibro  extends JInternalFrame  {
 	private JTable table;
 
 	private int idSeleccionado = -1; 
+	int hoveredRow = -1, hoveredColumn = -1;
 	/**
 	 * Launch the application.
 	 */
@@ -66,7 +72,7 @@ public class FrmCrudLibro  extends JInternalFrame  {
 		lblNewLabel.setBounds(292, 23, 342, 52);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Titulo:");
+		JLabel lblNewLabel_1 = new JLabel("T\u00EDtulo:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblNewLabel_1.setBounds(66, 98, 151, 34);
 		getContentPane().add(lblNewLabel_1);
@@ -76,7 +82,7 @@ public class FrmCrudLibro  extends JInternalFrame  {
 		lblNewLabel_2.setBounds(403, 206, 57, 34);
 		getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Categoria:");
+		JLabel lblNewLabel_3 = new JLabel("Categor\u00EDa:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblNewLabel_3.setBounds(66, 150, 151, 34);
 		getContentPane().add(lblNewLabel_3);
@@ -86,7 +92,7 @@ public class FrmCrudLibro  extends JInternalFrame  {
 		lblNewLabel_4.setBounds(402, 150, 151, 34);
 		getContentPane().add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_6 = new JLabel("Pais:");
+		JLabel lblNewLabel_6 = new JLabel("Pa\u00EDs:");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblNewLabel_6.setBounds(66, 210, 151, 27);
 		getContentPane().add(lblNewLabel_6);
@@ -134,8 +140,52 @@ public class FrmCrudLibro  extends JInternalFrame  {
 				"ID", "Titulo", "A\u00F1o", "Categoria", "Serie", "Fecha de Registro", "Pais"
 			}
 		));
+		
+		//selecciona una sola fila
+
+		table.setRowSelectionAllowed(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
 		
+		//desabilita mover las columnas
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		//color de la fila seleccionada
+		table.setSelectionBackground(Color.GREEN);
+		
+		//tamano de la fila	
+		table.getColumnModel().getColumn(0).setPreferredWidth(15);
+		table.getColumnModel().getColumn(1).setPreferredWidth(120);
+		table.getColumnModel().getColumn(2).setPreferredWidth(30);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
+		table.getColumnModel().getColumn(4).setPreferredWidth(50);
+		table.getColumnModel().getColumn(5).setPreferredWidth(90);
+		table.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		
+		//alineación
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+		table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+		
+		table.addMouseMotionListener((MouseMotionListener) new MouseMotionListener(){
+			    public void mouseMoved(MouseEvent e) {
+			      Point p = e.getPoint();
+			      hoveredRow = table.rowAtPoint(p);
+			      hoveredColumn = table.columnAtPoint(p);
+			      table.setRowSelectionInterval(hoveredRow, hoveredRow);
+			      table.repaint();   
+			    }
+			    public void mouseDragged(MouseEvent e) {
+			      hoveredRow = hoveredColumn = -1;
+			      table.repaint();
+			    }
+		});
+		
+		//No se pueda editar
+		table.setDefaultEditor(Object.class, null);
+		  
 		JButton btnIngresar = new JButton("Agregar");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
