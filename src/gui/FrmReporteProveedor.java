@@ -148,6 +148,6 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 		pnlReporte.add(jRViewer);
 		pnlReporte.repaint();
 		pnlReporte.revalidate();
-		
+	
 	}
 }
