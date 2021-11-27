@@ -23,6 +23,7 @@ import reporte.GeneradorReporte;
 
 import java.util.List;
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
 
 public class FrmReporteAutor extends JInternalFrame implements ActionListener {
 
@@ -51,7 +52,7 @@ public class FrmReporteAutor extends JInternalFrame implements ActionListener {
 		txtFiltro.setBounds(137, 114, 532, 27);
 		getContentPane().add(txtFiltro);
 		
-		JLabel lblConsultaDeAutor = new JLabel("CONSULTA DE AUTOR POR NOMBRE");
+		JLabel lblConsultaDeAutor = new JLabel("REPORTE AUTOR");
 		lblConsultaDeAutor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConsultaDeAutor.setFont(new Font("Tahoma", Font.BOLD, 24));
 		lblConsultaDeAutor.setBounds(169, 36, 572, 36);;
@@ -63,10 +64,11 @@ public class FrmReporteAutor extends JInternalFrame implements ActionListener {
 		getContentPane().add(panelReporte);
 		panelReporte.setLayout(new BorderLayout(0, 0));
 		
-		btnFiltrar_1 = new JButton("FILTRAR");
+		btnFiltrar_1 = new JButton(" FILTRAR");
+		btnFiltrar_1.setIcon(new ImageIcon(FrmReporteAutor.class.getResource("/iconos/Zoom.gif")));
 		btnFiltrar_1.addActionListener(this);
 		btnFiltrar_1.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnFiltrar_1.setBounds(717, 108, 127, 33);
+		btnFiltrar_1.setBounds(717, 108, 146, 33);
 		getContentPane().add(btnFiltrar_1);
 
 
