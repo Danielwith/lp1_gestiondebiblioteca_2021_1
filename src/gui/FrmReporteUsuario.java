@@ -45,7 +45,7 @@ public class FrmReporteUsuario extends JInternalFrame implements ActionListener 
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("Reporte Usuario");
-		setBounds(100, 100, 1000, 550);
+		setBounds(100, 100, 1200, 550);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("LISTA DE USUARIOS");
@@ -71,7 +71,7 @@ public class FrmReporteUsuario extends JInternalFrame implements ActionListener 
 		
 		panelReporte = new JPanel();
 		panelReporte.setBorder(new TitledBorder(new TitledBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "REPORTES", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)), "REPORTES", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)), "REPORTES", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelReporte.setBounds(10, 109, 895, 401);
+		panelReporte.setBounds(10, 109, 1100, 401);
 		getContentPane().add(panelReporte);
 		panelReporte.setLayout(new BorderLayout(0, 0));
 

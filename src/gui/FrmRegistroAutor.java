@@ -94,7 +94,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		
 		cboNacionalidad = new JComboBox<String>();
 		cboNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cboNacionalidad.setModel(new DefaultComboBoxModel(new String[] {" [Seleccione] ", "Per\u00FA", "Venezuela", "Argentina", "Alemania", "Cuba", "Holanda"}));
+		cboNacionalidad.setModel(new DefaultComboBoxModel<String>(new String[] {" [Seleccione] ", "Per\u00FA", "Venezuela", "Argentina", "Alemania", "Cuba", "Holanda"}));
 		cboNacionalidad.setBounds(182, 227, 243, 26);
 		getContentPane().add(cboNacionalidad);
 		

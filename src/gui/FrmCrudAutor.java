@@ -10,8 +10,10 @@ import java.awt.event.MouseListener;
 import java.sql.Date;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -19,14 +21,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Autor;
 import model.AutorModel;
 import util.Validaciones;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class FrmCrudAutor  extends JInternalFrame implements ActionListener, MouseListener  {
 
@@ -166,7 +165,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		scrollPane.setViewportView(table);
 		
 		cboNacionalidad = new JComboBox<String>();
-		cboNacionalidad.setModel(new DefaultComboBoxModel(new String[] {"[Seleccione] ", "Per\u00FA", "Italia", "Argentina", "Alemania", "Cuba", "Holanda", "Espa\u00F1a"}));
+		cboNacionalidad.setModel(new DefaultComboBoxModel<String>(new String[] {"[Seleccione] ", "Per\u00FA", "Italia", "Argentina", "Alemania", "Cuba", "Holanda", "Espa\u00F1a"}));
 		cboNacionalidad.setBounds(144, 231, 175, 24);
 		getContentPane().add(cboNacionalidad);
 
