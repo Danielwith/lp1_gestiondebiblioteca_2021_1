@@ -3,10 +3,12 @@ package gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,11 +20,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.RegistroAlumno;
 import model.AlumnoModel;
 import util.Validaciones;
+import javax.swing.ImageIcon;
 
 public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, MouseListener  {
 
@@ -40,6 +45,9 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 	//Es el Id que se obtiene al seleccionar la fila
 		private int idSeleccionado = -1; 
 		private JTextField txtnombres;
+		
+		int hoveredRow = -1, hoveredColumn = -1;
+		
 
 
 	/**
@@ -83,61 +91,64 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 		
 		JLabel lblApellido = new JLabel("Apellidos");
 		lblApellido.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblApellido.setBounds(52, 178, 135, 41);
+		lblApellido.setBounds(52, 173, 135, 41);
 		getContentPane().add(lblApellido);
 		
 		JLabel lblDni = new JLabel("Dni");
 		lblDni.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblDni.setBounds(52, 229, 135, 24);
+		lblDni.setBounds(52, 224, 135, 24);
 		getContentPane().add(lblDni);
 		
 		JLabel lblCorreo = new JLabel("Correo");
 		lblCorreo.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblCorreo.setBounds(52, 276, 135, 24);
+		lblCorreo.setBounds(52, 270, 135, 24);
 		getContentPane().add(lblCorreo);
 		
 		JLabel lblFechanac = new JLabel("Fecha Nacimiento");
 		lblFechanac.setFont(new Font("Times New Roman", Font.PLAIN, 29));
-		lblFechanac.setBounds(52, 326, 249, 24);
+		lblFechanac.setBounds(53, 318, 249, 24);
 		getContentPane().add(lblFechanac);
 		
 		txtapellido = new JTextField();
 		txtapellido.setColumns(10);
-		txtapellido.setBounds(298, 178, 278, 20);
+		txtapellido.setBounds(298, 178, 278, 24);
 		getContentPane().add(txtapellido);
 		
 		txtdni = new JTextField();
 		txtdni.setColumns(10);
-		txtdni.setBounds(298, 222, 278, 20);
+		txtdni.setBounds(298, 224, 278, 24);
 		getContentPane().add(txtdni);
 		
 		txtcorreo = new JTextField();
 		txtcorreo.setColumns(10);
-		txtcorreo.setBounds(298, 276, 278, 20);
+		txtcorreo.setBounds(298, 270, 278, 24);
 		getContentPane().add(txtcorreo);
 		
 		txtfechanacimiento = new JTextField();
 		txtfechanacimiento.setColumns(10);
-		txtfechanacimiento.setBounds(298, 334, 278, 20);
+		txtfechanacimiento.setBounds(298, 318, 278, 24);
 		getContentPane().add(txtfechanacimiento);
 		
 		btnRegistrar = new JButton("Registrar");
+		btnRegistrar.setIcon(new ImageIcon(FrmCrudAlumno.class.getResource("/iconos/Add.gif")));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setBounds(719, 136, 135, 41);
 		getContentPane().add(btnRegistrar);
 		
 		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setIcon(new ImageIcon(FrmCrudAlumno.class.getResource("/iconos/Zoom.gif")));
 		btnActualizar.addActionListener(this);
 		btnActualizar.setBounds(719, 193, 135, 41);
 		getContentPane().add(btnActualizar);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setIcon(new ImageIcon(FrmCrudAlumno.class.getResource("/iconos/Delete.gif")));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(719, 255, 135, 41);
 		getContentPane().add(btnEliminar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(52, 388, 800, 280);
+		scrollPane.setBounds(54, 365, 800, 280);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -149,12 +160,67 @@ public class FrmCrudAlumno  extends JInternalFrame implements ActionListener, Mo
 				"ID", "Nombres", "Apellidos", "DNI", "Correo", "Fecha Nacimiento"
 			}
 		));
+		
+		//alineación
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+		table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+		
+		
+		//tamano de la fila	
+		table.getColumnModel().getColumn(0).setPreferredWidth(25);
+		table.getColumnModel().getColumn(1).setPreferredWidth(120);
+		table.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table.getColumnModel().getColumn(3).setPreferredWidth(150);
+		table.getColumnModel().getColumn(4).setPreferredWidth(150);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		
+		//selecciona una sola fila
+		table.setRowSelectionAllowed(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		//desabilita mover las columnas
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		//color de la fila seleccionada
+		table.setSelectionBackground(Color.RED);
+		
+		//el mouse over
+	    table.addMouseMotionListener(new MouseMotionListener() {
+	        @Override
+	        public void mouseMoved(MouseEvent e) {
+	            Point p = e.getPoint();
+	            hoveredRow = table.rowAtPoint(p);
+	            hoveredColumn = table.columnAtPoint(p);
+	            table.setRowSelectionInterval(hoveredRow, hoveredRow);
+	            table.repaint();    
+	        }
+	        @Override
+	        public void mouseDragged(MouseEvent e) {
+	            hoveredRow = hoveredColumn = -1;
+	            table.repaint();
+	        }
+	    });
+	    
+	    //No se pueda editar
+	    table.setDefaultEditor(Object.class, null);
+	    
+		scrollPane.setViewportView(table);
+		
+		
+		
+		
 		table.getColumnModel().getColumn(5).setPreferredWidth(111);
 		scrollPane.setViewportView(table);
 		
 		txtnombres = new JTextField();
 		txtnombres.setColumns(10);
-		txtnombres.setBounds(298, 139, 278, 20);
+		txtnombres.setBounds(298, 139, 278, 24);
 		getContentPane().add(txtnombres);
 
 		lista();

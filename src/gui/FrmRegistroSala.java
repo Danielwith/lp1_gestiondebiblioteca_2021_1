@@ -60,53 +60,53 @@ public class FrmRegistroSala extends JInternalFrame implements ActionListener  {
 		setBounds(100, 100, 900, 550);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Numero");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		JLabel lblNewLabel = new JLabel("N\u00FAmero :");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel.setBounds(52, 113, 108, 19);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Piso");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		JLabel lblNewLabel_1 = new JLabel("Piso :");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(52, 171, 60, 19);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Capacidad");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		JLabel lblNewLabel_2 = new JLabel("Capacidad :");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_2.setBounds(52, 225, 134, 30);
 		getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Recursos");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 20));
+		JLabel lblNewLabel_3 = new JLabel("Recursos :");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_3.setBounds(52, 283, 134, 30);
 		getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Fecha");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 20));
+		JLabel lblNewLabel_4 = new JLabel("Fecha :");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_4.setBounds(52, 390, 99, 27);
 		getContentPane().add(lblNewLabel_4);
 		
 		txtnumero = new JTextField();
-		txtnumero.setBounds(275, 112, 153, 30);
+		txtnumero.setBounds(275, 112, 153, 20);
 		getContentPane().add(txtnumero);
 		txtnumero.setColumns(10);
 		
 		txtpiso = new JTextField();
-		txtpiso.setBounds(275, 169, 86, 30);
+		txtpiso.setBounds(275, 169, 86, 19);
 		getContentPane().add(txtpiso);
 		txtpiso.setColumns(10);
 		
 		txtcapacidad = new JTextField();
-		txtcapacidad.setBounds(275, 234, 153, 30);
+		txtcapacidad.setBounds(275, 234, 153, 19);
 		getContentPane().add(txtcapacidad);
 		txtcapacidad.setColumns(10);
 		
 		txtrecursos = new JTextField();
-		txtrecursos.setBounds(275, 292, 153, 30);
+		txtrecursos.setBounds(275, 292, 153, 19);
 		getContentPane().add(txtrecursos);
 		txtrecursos.setColumns(10);
 		
 		txtfecha = new JTextField();
-		txtfecha.setBounds(275, 397, 153, 30);
+		txtfecha.setBounds(275, 397, 153, 19);
 		getContentPane().add(txtfecha);
 		txtfecha.setColumns(10);
 		
@@ -121,13 +121,13 @@ public class FrmRegistroSala extends JInternalFrame implements ActionListener  {
 		lblNewLabel_6.setBounds(301, 34, 301, 37);
 		getContentPane().add(lblNewLabel_6);
 		
-		lblNewLabel_5 = new JLabel("Estado");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_5 = new JLabel("Estado :");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_5.setBounds(52, 339, 119, 19);
 		getContentPane().add(lblNewLabel_5);
 		
 		txtEstado = new JTextField();
-		txtEstado.setBounds(275, 342, 86, 30);
+		txtEstado.setBounds(275, 342, 86, 19);
 		getContentPane().add(txtEstado);
 		txtEstado.setColumns(10);
 
@@ -176,10 +176,19 @@ public class FrmRegistroSala extends JInternalFrame implements ActionListener  {
 		SalaModel model=new SalaModel();
 		int salida=model.insertaSala(obj);
 		if(salida>0) {
+			limpiarCajasTexto();
 			mensaje("REGISTRADO CORRECTAMENTE");
 		}
 		else {
 			mensaje("NO SE REGISTRO");
 		}
+	}
+	void limpiarCajasTexto() {
+		txtnumero.setText("");
+		txtpiso.setText("");
+		txtcapacidad.setText("");
+		txtrecursos.setText("");
+		txtEstado.setText("");
+		txtfecha.requestFocus();
 	}
 }

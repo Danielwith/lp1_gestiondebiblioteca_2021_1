@@ -30,7 +30,8 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 	private static final long serialVersionUID = 1L;
 	private JTextField txtFiltro;
 	private JPanel pnlReporte;
-	private JButton btnFiltrar;
+	private JButton btnBuscar;
+	private JButton btnFiltrartodo;
 
 
 	public FrmReporteProveedor() {
@@ -53,14 +54,14 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 		getContentPane().add(lblNewLabel_1);
 		
 		txtFiltro = new JTextField();
-		txtFiltro.setBounds(124, 84, 621, 20);
+		txtFiltro.setBounds(124, 84, 486, 20);
 		getContentPane().add(txtFiltro);
 		txtFiltro.setColumns(10);
 		
-		btnFiltrar = new JButton("Filtrar");
-		btnFiltrar.addActionListener(this);
-		btnFiltrar.setBounds(755, 83, 188, 23);
-		getContentPane().add(btnFiltrar);
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(this);
+		btnBuscar.setBounds(620, 83, 160, 23);
+		getContentPane().add(btnBuscar);
 		
 		pnlReporte = new JPanel();
 		pnlReporte.setBorder(new TitledBorder(null, "REPORTE", TitledBorder.CENTER, TitledBorder.TOP, null, null));
@@ -68,6 +69,15 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 		getContentPane().add(pnlReporte);
 		pnlReporte.setLayout(new BorderLayout(0, 0));
 		
+		btnFiltrartodo = new JButton("Filtrar todo");
+		btnFiltrartodo.addActionListener(this);
+		btnFiltrartodo.setBounds(790, 83, 154, 23);
+		getContentPane().add(btnFiltrartodo);
+		
+	}
+	
+	void limpiarCajasTexto() {
+		txtFiltro.setText("");
 	}
 	
 	public void mensaje(String ms) {
@@ -75,7 +85,10 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnFiltrar) {
+		if (e.getSource() == btnFiltrartodo) {
+			actionPerformedBtnNewButtonJButton(e);
+		}
+		if (e.getSource() == btnBuscar) {
 			actionPerformedBtnFiltrarJButton(e);
 		}
 	}
@@ -107,6 +120,34 @@ public class FrmReporteProveedor extends JInternalFrame implements ActionListene
 		pnlReporte.add(jRViewer);
 		pnlReporte.repaint();
 		pnlReporte.revalidate();
+		
+		limpiarCajasTexto();
 				
+	}
+	protected void actionPerformedBtnNewButtonJButton(ActionEvent e) {
+        
+		String nombre= txtFiltro.getText();
+
+		ProveedorModel p =new ProveedorModel();
+		List<Proveedor> lstProveedor=p.listaProveedorPorNombre(nombre);
+		
+		// 1 La data
+		JRBeanCollectionDataSource dataSource	= new JRBeanCollectionDataSource(lstProveedor);
+				
+		//2 el diseño del reporte
+		String file = "reportaProveedor.jasper";
+				
+		//3 se genera el reporte
+		JasperPrint jasperPrint = GeneradorReporte.genera(file, dataSource, null);
+				
+		//4 se muestra el visor
+		JRViewer jRViewer = new JRViewer(jasperPrint);
+				
+		//5 Se añade el visor al panel
+		pnlReporte.removeAll();
+		pnlReporte.add(jRViewer);
+		pnlReporte.repaint();
+		pnlReporte.revalidate();
+	
 	}
 }

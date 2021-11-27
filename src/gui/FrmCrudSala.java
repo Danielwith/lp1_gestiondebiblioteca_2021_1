@@ -68,6 +68,7 @@ public class FrmCrudSala  extends JInternalFrame implements ActionListener, Mous
 	 * Create the frame.
 	 */
 	public FrmCrudSala() {
+		getContentPane().setFont(new Font("Dialog", Font.BOLD, 14));
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setMaximizable(true);
 		setIconifiable(true);
@@ -82,57 +83,63 @@ public class FrmCrudSala  extends JInternalFrame implements ActionListener, Mous
 		lblMantenimientoDeSala.setBounds(101, 37, 641, 38);
 		getContentPane().add(lblMantenimientoDeSala);
 		
-		JLabel lblNumero = new JLabel("Numero");
-		lblNumero.setBounds(117, 115, 46, 14);
+		JLabel lblNumero = new JLabel("N\u00FAmero :");
+		lblNumero.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNumero.setBounds(117, 115, 94, 14);
 		getContentPane().add(lblNumero);
 		
-		JLabel lblPiso = new JLabel("Piso");
-		lblPiso.setBounds(117, 158, 46, 14);
+		JLabel lblPiso = new JLabel("Piso :");
+		lblPiso.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblPiso.setBounds(117, 158, 62, 14);
 		getContentPane().add(lblPiso);
 		
-		JLabel lblCapacidad = new JLabel("Capacidad");
-		lblCapacidad.setBounds(117, 197, 62, 14);
+		JLabel lblCapacidad = new JLabel("Capacidad :");
+		lblCapacidad.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblCapacidad.setBounds(117, 197, 94, 14);
 		getContentPane().add(lblCapacidad);
 		
-		JLabel lblRecursos = new JLabel("Recursos");
-		lblRecursos.setBounds(427, 115, 46, 14);
+		JLabel lblRecursos = new JLabel("Recursos :");
+		lblRecursos.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblRecursos.setBounds(427, 115, 94, 14);
 		getContentPane().add(lblRecursos);
 		
-		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setBounds(427, 158, 46, 14);
+		JLabel lblEstado = new JLabel("Estado : ");
+		lblEstado.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblEstado.setBounds(427, 158, 74, 14);
 		getContentPane().add(lblEstado);
 		
-		lblFechaRegistro = new JLabel("Fecha Registro");
-		lblFechaRegistro.setBounds(427, 197, 86, 14);
+		lblFechaRegistro = new JLabel("Fecha Registro :");
+		lblFechaRegistro.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblFechaRegistro.setBounds(427, 194, 126, 20);
 		getContentPane().add(lblFechaRegistro);
 		
 		txtNumero = new JTextField();
-		txtNumero.setBounds(192, 112, 86, 20);
+		txtNumero.setBounds(233, 114, 86, 20);
 		getContentPane().add(txtNumero);
 		txtNumero.setColumns(10);
 		
 		txtPiso = new JTextField();
-		txtPiso.setBounds(192, 155, 86, 20);
+		txtPiso.setBounds(233, 157, 86, 20);
 		getContentPane().add(txtPiso);
 		txtPiso.setColumns(10);
 		
 		txtCapacidad = new JTextField();
-		txtCapacidad.setBounds(192, 194, 86, 20);
+		txtCapacidad.setBounds(233, 196, 86, 20);
 		getContentPane().add(txtCapacidad);
 		txtCapacidad.setColumns(10);
 		
 		txtRecursos = new JTextField();
-		txtRecursos.setBounds(549, 112, 86, 20);
+		txtRecursos.setBounds(559, 114, 86, 20);
 		getContentPane().add(txtRecursos);
 		txtRecursos.setColumns(10);
 		
 		txtEstado = new JTextField();
-		txtEstado.setBounds(549, 155, 86, 20);
+		txtEstado.setBounds(559, 157, 86, 20);
 		getContentPane().add(txtEstado);
 		txtEstado.setColumns(10);
 		
 		txtFechaRegistro = new JTextField();
-		txtFechaRegistro.setBounds(549, 194, 86, 20);
+		txtFechaRegistro.setBounds(559, 196, 86, 20);
 		getContentPane().add(txtFechaRegistro);
 		txtFechaRegistro.setColumns(10);
 		
