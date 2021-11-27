@@ -62,7 +62,9 @@ public class FrmConsultaAutor extends JInternalFrame implements KeyListener {
 			}
 		));
 		scrollPane.setViewportView(table);
-
+		
+		//desabilita mover las columnas
+				table.getTableHeader().setReorderingAllowed(false);
 
 	}
 	public void keyPressed(KeyEvent e) {

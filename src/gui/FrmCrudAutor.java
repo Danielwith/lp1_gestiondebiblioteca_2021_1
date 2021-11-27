@@ -170,6 +170,9 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		cboNacionalidad.setBounds(144, 231, 175, 24);
 		getContentPane().add(cboNacionalidad);
 
+		//desabilita mover las columnas
+				table.getTableHeader().setReorderingAllowed(false);
+				
 		lista();
 
 	}
