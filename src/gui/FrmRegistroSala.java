@@ -176,10 +176,19 @@ public class FrmRegistroSala extends JInternalFrame implements ActionListener  {
 		SalaModel model=new SalaModel();
 		int salida=model.insertaSala(obj);
 		if(salida>0) {
+			limpiarCajasTexto();
 			mensaje("REGISTRADO CORRECTAMENTE");
 		}
 		else {
 			mensaje("NO SE REGISTRO");
 		}
+	}
+	void limpiarCajasTexto() {
+		txtnumero.setText("");
+		txtpiso.setText("");
+		txtcapacidad.setText("");
+		txtrecursos.setText("");
+		txtEstado.setText("");
+		txtfecha.requestFocus();
 	}
 }
