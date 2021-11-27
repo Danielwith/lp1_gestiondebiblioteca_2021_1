@@ -11,6 +11,7 @@ import javax.swing.border.TitledBorder;
 
 import entidad.RegistroAlumno;
 
+import java.util.HashMap;
 import java.util.List;
 
 import model.AlumnoModel;
