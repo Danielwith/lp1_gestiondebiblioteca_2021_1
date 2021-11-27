@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import entidad.Autor;
 import model.AutorModel;
 import util.Validaciones;
+import javax.swing.ImageIcon;
 
 public class FrmRegistroAutor extends JInternalFrame implements ActionListener  {
 
@@ -62,30 +63,30 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		getContentPane().setLayout(null);
 		
 		JLabel lblNombres = new JLabel("NOMBRES:");
-		lblNombres.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
-		lblNombres.setBounds(162, 130, 110, 22);
+		lblNombres.setFont(new Font("Dubai", Font.PLAIN, 20));
+		lblNombres.setBounds(32, 129, 133, 22);
 		getContentPane().add(lblNombres);
 		
 		JLabel lblApellidos = new JLabel("APELLIDOS:");
-		lblApellidos.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
-		lblApellidos.setBounds(162, 164, 110, 22);
+		lblApellidos.setFont(new Font("Dubai", Font.PLAIN, 20));
+		lblApellidos.setBounds(32, 180, 136, 22);
 		getContentPane().add(lblApellidos);
 		
 		txtNombres = new JTextField();
 		txtNombres.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtNombres.setColumns(10);
-		txtNombres.setBounds(360, 127, 256, 26);
+		txtNombres.setBounds(182, 128, 243, 26);
 		getContentPane().add(txtNombres);
 		
 		txtApellidos = new JTextField();
 		txtApellidos.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(361, 162, 256, 26);
+		txtApellidos.setBounds(182, 179, 243, 26);
 		getContentPane().add(txtApellidos);
 		
 		JLabel lblNacionalidad = new JLabel("NACIONALIDAD:");
-		lblNacionalidad.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
-		lblNacionalidad.setBounds(162, 200, 163, 22);
+		lblNacionalidad.setFont(new Font("Dubai", Font.PLAIN, 20));
+		lblNacionalidad.setBounds(29, 228, 163, 22);
 		getContentPane().add(lblNacionalidad);
 		
 		String[] arrayPais =  new String[] {" [Seleccione] ","Perú", "Venezuela", "Argentina", "Alemania", "Cuba", "Holanda"};
@@ -93,53 +94,54 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		
 		cboNacionalidad = new JComboBox<String>();
 		cboNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cboNacionalidad.setModel(new DefaultComboBoxModel<String>(arrayPais));
-		cboNacionalidad.setBounds(360, 198, 256, 26);
+		cboNacionalidad.setModel(new DefaultComboBoxModel(new String[] {" [Seleccione] ", "Per\u00FA", "Venezuela", "Argentina", "Alemania", "Cuba", "Holanda"}));
+		cboNacionalidad.setBounds(182, 227, 243, 26);
 		getContentPane().add(cboNacionalidad);
 		
 		JLabel lblFechaNacimiento = new JLabel("FECHA NACIMIENTO:");
-		lblFechaNacimiento.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
-		lblFechaNacimiento.setBounds(162, 267, 194, 22);
+		lblFechaNacimiento.setFont(new Font("Dubai", Font.PLAIN, 20));
+		lblFechaNacimiento.setBounds(448, 180, 194, 22);
 		getContentPane().add(lblFechaNacimiento);
 		
 		JLabel lblFechaRegistro = new JLabel("FECHA REGISTRO:");
-		lblFechaRegistro.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
-		lblFechaRegistro.setBounds(162, 299, 194, 22);
+		lblFechaRegistro.setFont(new Font("Dubai", Font.PLAIN, 20));
+		lblFechaRegistro.setBounds(448, 226, 194, 22);
 		getContentPane().add(lblFechaRegistro);
 		
 		txtFechaNacimiento = new JTextField();
 		txtFechaNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtFechaNacimiento.setColumns(10);
-		txtFechaNacimiento.setBounds(361, 265, 256, 26);
+		txtFechaNacimiento.setBounds(645, 179, 229, 26);
 		getContentPane().add(txtFechaNacimiento);
 		
 		txtFechaRegistro = new JTextField();
 		txtFechaRegistro.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtFechaRegistro.setColumns(10);
-		txtFechaRegistro.setBounds(361, 297, 256, 26);
+		txtFechaRegistro.setBounds(646, 225, 228, 26);
 		getContentPane().add(txtFechaRegistro);
 		
 		JLabel lblGrado = new JLabel("GRADO:");
-		lblGrado.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 24));
-		lblGrado.setBounds(162, 232, 163, 22);
+		lblGrado.setFont(new Font("Dubai", Font.PLAIN, 20));
+		lblGrado.setBounds(449, 130, 99, 22);
 		getContentPane().add(lblGrado);
 		
 		txtGrado = new JTextField();
 		txtGrado.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtGrado.setColumns(10);
-		txtGrado.setBounds(360, 231, 256, 26);
+		txtGrado.setBounds(645, 128, 229, 26);
 		getContentPane().add(txtGrado);
 		
 		JLabel lblRegistroAutor = new JLabel("REGISTRO AUTOR");
-		lblRegistroAutor.setForeground(Color.RED);
+		lblRegistroAutor.setForeground(Color.WHITE);
 		lblRegistroAutor.setFont(new Font("Bahnschrift", Font.BOLD, 40));
-		lblRegistroAutor.setBounds(256, 37, 340, 40);
+		lblRegistroAutor.setBounds(264, 49, 340, 40);
 		getContentPane().add(lblRegistroAutor);
 		
-		btnRegistrar = new JButton("Registrar");
+		btnRegistrar = new JButton("  Registrar");
+		btnRegistrar.setIcon(new ImageIcon(FrmRegistroAutor.class.getResource("/iconos/Add.gif")));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnRegistrar.setBounds(313, 380, 227, 56);
+		btnRegistrar.setBounds(316, 355, 227, 56);
 		getContentPane().add(btnRegistrar);
 
 	}
@@ -168,15 +170,27 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener  
 		/*VALIDACIONES*/
 		if(!nombres.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El nombre es de 3 a 30 caracteres");
+			return;
 		}	
 		if(!apellidos.matches(Validaciones.TEXTOALUMNO)) {
 			mensaje("El apellido es de 3 a 30 caracteres");
+			return;
+		}
+		if(!grado.matches(Validaciones.TEXTOALUMNO)) {
+			mensaje("El texto es de 3 a 30 caracteres");
+			return;
 		}
 		if(cboNacionalidad.getSelectedIndex() == 0) {
 			mensaje("Seleccione una nacionalidad");
+			return;
 		}
 		if(!fechaNacimiento.matches(Validaciones.FECHA)) {
 			mensaje("La fecha es de formato yyyy-MM-dd");
+			return;
+		}
+		if(!fechaRegistro.matches(Validaciones.FECHA)) {
+			mensaje("La fecha es de formato yyyy-MM-dd");
+			return;
 		}
 		
 		

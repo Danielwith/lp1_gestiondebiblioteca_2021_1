@@ -25,13 +25,15 @@ import javax.swing.table.DefaultTableModel;
 import entidad.Autor;
 import model.AutorModel;
 import util.Validaciones;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class FrmCrudAutor  extends JInternalFrame implements ActionListener, MouseListener  {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
-	private JTextField txtNacionalidad;
+	private JComboBox<String> cboNacionalidad;
 	private JTextField txtFechaNa;
 	private JTable table;
 	private JButton btnRegistrar;
@@ -93,7 +95,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		getContentPane().add(lblFechanac);
 		
 		JLabel lblNacionalidad = new JLabel("Nacionalidad");
-		lblNacionalidad.setBounds(24, 220, 157, 41);
+		lblNacionalidad.setBounds(23, 219, 120, 41);
 		lblNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		getContentPane().add(lblNacionalidad);
 		
@@ -105,31 +107,26 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		txtNombre = new JTextField();
 		txtNombre.setBounds(144, 132, 175, 20);
 		txtNombre.setColumns(10);
-		txtNombre.setBackground(Color.WHITE);
+		txtNombre.setBackground(Color.BLACK);
 		getContentPane().add(txtNombre);
 		
 		txtApellido = new JTextField();
 		txtApellido.setBounds(145, 179, 176, 20);
 		txtApellido.setColumns(10);
-		txtApellido.setBackground(Color.WHITE);
+		txtApellido.setBackground(Color.BLACK);
 		getContentPane().add(txtApellido);
 		
-		txtNacionalidad = new JTextField();
-		txtNacionalidad.setBounds(146, 231, 176, 20);
-		txtNacionalidad.setColumns(10);
-		txtNacionalidad.setBackground(Color.WHITE);
-		getContentPane().add(txtNacionalidad);
 		
 		txtFechaNa = new JTextField();
 		txtFechaNa.setBounds(504, 126, 202, 20);
 		txtFechaNa.setColumns(10);
-		txtFechaNa.setBackground(Color.WHITE);
+		txtFechaNa.setBackground(Color.BLACK);
 		getContentPane().add(txtFechaNa);
 		
 		txtGrado = new JTextField();
 		txtGrado.setBounds(507, 176, 202, 22);
 		txtGrado.setColumns(10);
-		txtGrado.setBackground(Color.WHITE);
+		txtGrado.setBackground(Color.BLACK);
 		getContentPane().add(txtGrado);
 		
 		btnRegistrar = new JButton(" Registrar");
@@ -167,6 +164,11 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 			}
 		));
 		scrollPane.setViewportView(table);
+		
+		cboNacionalidad = new JComboBox<String>();
+		cboNacionalidad.setModel(new DefaultComboBoxModel(new String[] {"[Seleccione] ", "Per\u00FA", "Italia", "Argentina", "Alemania", "Cuba", "Holanda", "Espa\u00F1a"}));
+		cboNacionalidad.setBounds(144, 231, 175, 24);
+		getContentPane().add(cboNacionalidad);
 
 		lista();
 
@@ -176,7 +178,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		txtNombre.setText("");
 		txtApellido.setText("");
 	    txtFechaNa.setText("");
-		txtNacionalidad.setText("");
+	    cboNacionalidad.setSelectedItem("");
 		txtGrado.setText("");
 	}
 	
@@ -257,8 +259,9 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		txtNombre.setText(nom);
 		txtApellido.setText(ape);
 		txtFechaNa.setText(String.valueOf(fechaNA));
-		txtNacionalidad.setText(naci);
+		cboNacionalidad.setSelectedItem(naci);
 		txtGrado.setText(String.valueOf(grado));
+		
 	
 		System.out.println(">>> idSeleccionado -> " + idSeleccionado);
 		
@@ -268,23 +271,28 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		String nom  = txtNombre.getText();
 		String ape = txtApellido.getText();
 		String fecNa = txtFechaNa.getText();
-		String nac = txtNacionalidad.getText();
 		String gra = txtGrado.getText();
+		String nacionalidad = cboNacionalidad.getSelectedItem().toString();
 		
-		if (!nom.matches(Validaciones.TEXTO)) {
-			mensaje("El nombre es de 2 a 20 caracteres");
+		
+		if (!nom.matches(Validaciones.TEXTOALUMNO)) {
+			mensaje("El nombre es de 2 a 30 caracteres");
 			return;
 		}
-		if (!ape.matches(Validaciones.TEXTO)) {
-			mensaje("El apellido es de 2 a 20 caracteres");
-			return;
-		}
-		if (!nac.matches(Validaciones.TEXTO)) {
-			mensaje("El texto es de 2 a 20 caracteres");
+		if (!ape.matches(Validaciones.TEXTOALUMNO)) {
+			mensaje("El apellido es de 2 a 30 caracteres");
 			return;
 		}
 		if (!fecNa.matches(Validaciones.FECHA)) {
 			mensaje("La fecha es YYYY-MM-dd");
+			return;
+		}
+		if(!gra.matches(Validaciones.TEXTOALUMNO)) {
+			mensaje("El texto es de 2 a 30 caracteres");
+			return;
+		}
+		if(cboNacionalidad.getSelectedIndex() == 0) {
+			mensaje("Seleccione una nacionalidad");
 			return;
 		}
 		/*if (!fecRe.matches(Validaciones.FECHA)) {
@@ -300,7 +308,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		obj.setApellidos(ape);
 		obj.setFechaNacimiento(Date.valueOf(fecNa));
 		obj.setFechaRegistro(fecha);
-		obj.setNacionalidad(nac);
+		obj.setNacionalidad(nacionalidad);
 		obj.setGrado(gra);
 		
 		AutorModel model = new AutorModel();
@@ -318,7 +326,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		String nom  = txtNombre.getText();
 		String ape = txtApellido.getText();
 		String fecNa = txtFechaNa.getText();
-		String nac = txtNacionalidad.getText();
+		String nacionalidad = cboNacionalidad.getSelectedItem().toString();
 		String gra = txtGrado.getText();
 		
 		if(idSeleccionado == -1) {
@@ -333,18 +341,16 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 			mensaje("El apellido es de 2 a 20 caracteres");
 			return;
 		}
-		if (!nac.matches(Validaciones.TEXTO)) {
-			mensaje("El texto es de 2 a 20 caracteres");
-			return;
-		}
 		if (!fecNa.matches(Validaciones.FECHA)) {
 			mensaje("La fecha es YYYY-MM-dd");
 			return;
 		}
-		/*if (!fecRe.matches(Validaciones.FECHA)) {
-			mensaje("La fecha es YYYY-MM-dd");
-			return;
-		}*/
+		if(cboNacionalidad.getSelectedIndex() == 0) {
+			mensaje("Seleccione una nacionalidad");
+		}
+		if(!gra.matches(Validaciones.TEXTO)) {
+			mensaje("Dijite texto");
+		}
 		
 		long millis=System.currentTimeMillis();  
 		java.sql.Date fecha=new java.sql.Date(millis); 
@@ -356,7 +362,7 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 		obj.setApellidos(ape);
 		obj.setFechaNacimiento(Date.valueOf(fecNa));
 		obj.setFechaRegistro(fecha);
-		obj.setNacionalidad(nac);
+		obj.setNacionalidad(nacionalidad);
 		obj.setGrado(gra);
 		
 		AutorModel model = new AutorModel();
@@ -389,7 +395,6 @@ public class FrmCrudAutor  extends JInternalFrame implements ActionListener, Mou
 			}
 		}
 	}
-	
 }
 
 

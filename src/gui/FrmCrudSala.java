@@ -222,14 +222,14 @@ public class FrmCrudSala  extends JInternalFrame implements ActionListener, Mous
 
 		//alineación
 
-				DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+				DefaultTableCellRenderer rightRenderer1 = new DefaultTableCellRenderer();
 
-				rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+				rightRenderer1.setHorizontalAlignment(JLabel.CENTER);
 				
-				table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
-				table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
-				table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
-				table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+				table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer1);
+				table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer1);
+				table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer1);
+				table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer1);
 		
 		//selecciona una sola fila
 
