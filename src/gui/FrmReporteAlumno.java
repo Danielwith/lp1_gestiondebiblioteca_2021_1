@@ -25,6 +25,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 
@@ -40,7 +44,7 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("Reporte Alumno");
-		setBounds(100, 100, 1000, 568);
+		setBounds(100, 100, 1115, 586);
 		getContentPane().setLayout(null);
 		
 		JLabel lblReporteDeNombre = new JLabel("Consulta de alumno por nombre");
@@ -61,12 +65,12 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 		
 		btnFiltrar = new JButton("Filtrar");
 		btnFiltrar.addActionListener(this);
-		btnFiltrar.setBounds(805, 96, 113, 21);
+		btnFiltrar.setBounds(923, 96, 113, 21);
 		getContentPane().add(btnFiltrar);
 		
 		pnlReporte = new JPanel();
 		pnlReporte.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Reporte", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(255, 255, 255)));
-		pnlReporte.setBounds(29, 155, 885, 346);
+		pnlReporte.setBounds(10, 121, 1083, 426);
 		getContentPane().add(pnlReporte);
 		pnlReporte.setLayout(new BorderLayout(0, 0));
 
